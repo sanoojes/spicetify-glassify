@@ -167,7 +167,13 @@ jobs:
           fi
 
           git fetch origin gh-pages
+
+          # CLEAN workspace to prevent untracked files blocking checkout
+          git reset --hard origin/gh-pages
+          git clean -fdx
+
           git checkout gh-pages
+
           # Remove everything except .git and assets
           shopt -s extglob
           git rm -rf !(assets|.git) || true
