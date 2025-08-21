@@ -1,6 +1,6 @@
 import appStore from '@app/store/appStore.ts';
 import getOrCreateStyle from '@app/utils/dom/getOrCreateStyle.ts';
-import { isLinux, isVersionAtLeast } from '@app/utils/platform.ts';
+import { isLinux, isVersionAtLeast, isWindows } from '@app/utils/platform.ts';
 
 function getZoom() {
   const zoom = window.outerHeight / window.innerHeight;
@@ -55,7 +55,7 @@ async function updateTitlebarHeight(height: number) {
 }
 
 export default function setControls(height = appStore.getState().windowControlHeight) {
-  if (isLinux()) return;
+  if (!isWindows()) return;
   updateTitlebarHeight(height).then(() => mountTransparentWindowControls(height));
 }
 
