@@ -163,7 +163,7 @@ export const DEFAULT_STATE: AppState = {
       bgColor: `var(--glass-bg)`,
     },
   },
-  windowControlHeight: 64,
+  windowControlHeight: 88,
 };
 
 type AppStateSetters = {
