@@ -1,6 +1,7 @@
 import loadAndProcessImage from '@app/components/background/helper/loadAndProcessImage.ts';
 import { FragmentShader, GetShaderUniforms, VertexShader } from '@app/shader/animatedBg.ts';
 import appStore from '@app/store/appStore.ts';
+import waitForGlobal from '@app/utils/dom/waitForGlobal.ts';
 import React, { type FC, useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useStore } from 'zustand';
@@ -104,6 +105,14 @@ const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
     const handleBlur = () => {
       isFocusedRef.current = false;
     };
+
+    waitForGlobal<any>(() => window?._spicy_lyrics?.fullscreen).then((fullscreen) =>
+      fullscreen?.onopen(handleBlur)
+    );
+    waitForGlobal<any>(() => window?._spicy_lyrics?.fullscreen).then((fullscreen) =>
+      fullscreen?.onclose(handleFocus)
+    );
+
     if (autoStopAnimation) {
       window.addEventListener('focus', handleFocus);
       window.addEventListener('blur', handleBlur);
