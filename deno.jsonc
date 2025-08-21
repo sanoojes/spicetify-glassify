@@ -1,17 +1,12 @@
 {
+  "version": "1.0.0",
   "tasks": {
     "dev": "deno run -A builder/builder.ts --watch --copyToSpice",
-
     "build": "deno run -A builder/builder.ts --minify",
-
     "check": "deno run -A npm:@biomejs/biome check --write",
-
     "lint": "deno run -A npm:@biomejs/biome check",
-
     "reload": "deno run -A builder/builder.ts --reload --minify",
-
     "clean-build": "deno task clean && deno task build",
-
     "clean": "deno run -A -e \"await Deno.remove('dist', { recursive: true }).catch(()=>{})\""
   },
   "imports": {

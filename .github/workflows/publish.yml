@@ -2,7 +2,7 @@ name: Deploy Jekyll + Deno Builder
 
 on:
   push:
-    branches: ["docs"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -60,7 +60,7 @@ jobs:
       - name: Generate version tag
         id: vars
         run: |
-          VERSION="v$(date +'%Y.%m.%d.%H%M')"   # or jq -r .version deno.json
+          VERSION="v$(deno eval 'console.log(JSON.parse(Deno.readTextFileSync("deno.jsonc").replace(/\/\/.*|\/\*[\s\S]*?\*\//g, ""))["version"])')"
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       # ✅ Copy dist into _site/releases/<version>
@@ -126,3 +126,67 @@ jobs:
           name: Release ${{ needs.build.outputs.version }}
           body: "Automated release from CI/CD"
           files: dist/**
+
+    # --- Archive job: push dist to branch ---
+  archive:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Commit & Push dist to releases branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Create or checkout releases branch
+          git fetch origin releases || true
+          git checkout releases || git checkout --orphan releases
+
+          VERSION=${{ needs.build.outputs.version }}
+
+          # Make versioned folder
+          mkdir -p versions/$VERSION
+          cp -r dist/* versions/$VERSION/
+
+          # Write README for this version
+          echo "# 📦 Release $VERSION" > versions/$VERSION/README.md
+          echo "" >> versions/$VERSION/README.md
+          echo "Built distribution for **$VERSION**." >> versions/$VERSION/README.md
+          echo "" >> versions/$VERSION/README.md
+          echo "- [Back to all releases](../../)" >> versions/$VERSION/README.md
+
+          # Update "latest"
+          rm -rf versions/latest
+          mkdir -p versions/latest
+          cp -r dist/* versions/latest/
+          echo "# 📦 Latest Release" > versions/latest/README.md
+          echo "" >> versions/latest/README.md
+          echo "This folder always points to the most recent release." >> versions/latest/README.md
+          echo "" >> versions/latest/README.md
+          echo "- [Back to all releases](../../)" >> versions/latest/README.md
+
+          # Rebuild top-level README
+          echo "# 📦 Release Artifacts" > README.md
+          echo "" >> README.md
+          echo "This branch stores built artifacts for each release." >> README.md
+          echo "" >> README.md
+          echo "## 🔗 Latest" >> README.md
+          echo "- [latest/](./versions/latest)" >> README.md
+          echo "" >> README.md
+          echo "## 📚 Versions" >> README.md
+          for dir in $(ls -d versions/v* 2>/dev/null | sort -V); do
+            ver=$(basename "$dir")
+            echo "- [$ver](./versions/$ver)" >> README.md
+          done
+
+          git add versions/ README.md
+          git commit -m "Release $VERSION"
+          git push origin releases --force
