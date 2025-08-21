@@ -152,40 +152,6 @@ jobs:
         with:
           source: ./
           destination: ./_site
-
-      - name: Deploy to gh-pages branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Initialize gh-pages if missing
-          if ! git ls-remote --exit-code origin gh-pages; then
-            git checkout --orphan gh-pages
-            git rm -rf .
-            git commit --allow-empty -m "Initialize gh-pages branch"
-            git push origin gh-pages
-          fi
-
-          git fetch origin gh-pages
-
-          # CLEAN workspace to prevent untracked files blocking checkout
-          git reset --hard origin/gh-pages
-          git clean -fdx
-
-          git checkout gh-pages
-
-          # Remove everything except .git and assets
-          shopt -s extglob
-          git rm -rf !(assets|.git) || true
-          shopt -u extglob
-
-          # Copy Jekyll site
-          rsync -a _site/ ./  # assets already merged from main
-
-          git add .
-          git commit -m "Deploy site ${{ needs.build.outputs.version }}" || echo "No changes to commit"
-          git push origin gh-pages --force
-
       - name: Upload artifact for Pages
         uses: actions/upload-pages-artifact@v3
 
