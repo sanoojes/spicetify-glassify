@@ -386,8 +386,9 @@ body[data-page-url*="/discography"] {
 .Root__globalNav,
 .Root__nav-bar,
 .Root__main-view,
-#Desktop_PanelContainer_Id {
-  border-radius: var(--s-3xl);
+#Desktop_PanelContainer_Id,
+.Root__right-sidebar #SpicyLyricsPage {
+  border-radius: var(--s-3xl) !important;
   box-shadow: var(--shadow-glass-large) !important;
 }
 .Root__nav-bar {
