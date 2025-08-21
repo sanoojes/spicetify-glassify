@@ -113,6 +113,24 @@ const main = async () => {
     await build(cssBuildOptions);
   }
 
+  const COLORS_FILE = join(DIST_PATH, "colors.ini");
+  const colorsCopyTargets = copyToSpice
+    ? [
+        { from: COLORS_FILE, to: join(THEME_PATH, "colors.ini") },
+        ...(watch || copyToSpice
+          ? [{ from: COLORS_FILE, to: join(XPUI_PATH, "colors.ini") }]
+          : []),
+      ]
+    : [];
+
+  await Deno.writeTextFile(COLORS_FILE, "[dark]");
+  Logger.info(`[COLORS] Generated -> ${COLORS_FILE}`);
+
+  for (const { from, to } of colorsCopyTargets) {
+    await Deno.copyFile(from, to);
+    Logger.debug(`Copied: ${from} → ${to}`);
+  }
+
   const runSpicetifyCommand = async (args: string[]) => {
     const command = new Deno.Command("spicetify", { args });
     const { code, stderr } = await command.output();
