@@ -84,6 +84,7 @@ export type AppState = {
   bg: BackgroundState;
   player: PlayerState;
   umv: UnderMainViewState;
+  windowControlHeight: number;
 };
 
 const PLAYER_BG_FILTER = {
@@ -164,6 +165,7 @@ export const DEFAULT_STATE: AppState = {
       bgColor: `var(--glass-bg)`,
     },
   },
+  windowControlHeight: 64,
 };
 
 type AppStateSetters = {
@@ -186,6 +188,8 @@ type AppStateSetters = {
 
   setUMV: (umv: Partial<UnderMainViewState>) => void;
   setUMVFilter: (filter: Partial<UnderMainViewState["filter"]>) => void;
+
+  setWindowControlHeight: (windowControlHeight: number) => void;
 
   exportConfig: () => string | null;
   importConfig: (config: AppState) => void;
@@ -215,6 +219,8 @@ const appStore = createStore<AppState & AppStateSetters>()(
             },
           }),
 
+        setWindowControlHeight: (windowControlHeight) =>
+          set({ windowControlHeight }),
         setUMV: (umv) => set({ umv: { ...get().umv, ...umv } }),
         setUMVFilter: (filter) =>
           set({

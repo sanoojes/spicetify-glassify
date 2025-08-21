@@ -7,6 +7,8 @@ import addSettings from "@app/utils/settings/addSettings.tsx";
 import patchIcons from "@app/utils/patchIcons.ts";
 import setPlayer from "@app/features/setPlaybar.tsx";
 import initNotificationSystem from "@app/utils/initNotificationSystem.tsx";
+import { isWindows } from "@app/utils/platform.ts";
+import setControls from "@app/features/setControls.ts";
 
 const main = async () => {
   await waitForGlobal(
@@ -15,6 +17,8 @@ const main = async () => {
   await new Promise((res) => Spicetify?.Events?.webpackLoaded?.on(res));
 
   initNotificationSystem();
+
+  if (isWindows()) setControls();
 
   patchIcons();
 
