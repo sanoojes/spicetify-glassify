@@ -25,6 +25,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Pages
+        if: ${{ !env.ACT }}
         uses: actions/configure-pages@v5
 
       - name: Setup Deno
