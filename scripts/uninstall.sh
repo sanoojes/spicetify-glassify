@@ -2,14 +2,14 @@
 
 set -e
 
-theme_name="Lucid"
+theme_name="Glassify"
 theme_dir="$(dirname "$(spicetify -c)")/Themes/$theme_name"
 
-# Check if Lucid theme folder exists
+# Check if Glassify theme folder exists
 if [ ! -d "$theme_dir" ]; then
-    echo "⚠️ Lucid theme not found at $theme_dir"
+    echo "⚠️ Glassify theme not found at $theme_dir"
 else
-    echo "🗑 Removing Lucid theme directory..."
+    echo "🗑 Removing Glassify theme directory..."
     rm -rf "$theme_dir"
     echo "✅ Theme directory removed."
 fi
@@ -24,4 +24,4 @@ spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_j
 echo "🎨 Reapplying default settings..."
 spicetify apply
 
-echo "✅ Lucid theme uninstalled successfully!"
+echo "✅ Glassify theme uninstalled successfully!"

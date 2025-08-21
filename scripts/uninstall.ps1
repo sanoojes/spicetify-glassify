@@ -1,13 +1,13 @@
 $ErrorActionPreference = 'Stop'
 
-$themeName = 'Lucid'
+$themeName = 'Glassify'
 $themeDir = Join-Path -Path (Split-Path (spicetify -c)) -ChildPath "Themes\$themeName"
 
 # Check if theme directory exists
 if (-Not (Test-Path -Path $themeDir)) {
-    Write-Host "⚠️ Lucid theme not found at '$themeDir'" -ForegroundColor Yellow
+    Write-Host "⚠️ Glassify theme not found at '$themeDir'" -ForegroundColor Yellow
 } else {
-    Write-Host "🗑 Removing Lucid theme directory..."
+    Write-Host "🗑 Removing Glassify theme directory..."
     Remove-Item -Path $themeDir -Recurse -Force
     Write-Host "✅ Theme directory removed." -ForegroundColor Green
 }
@@ -22,4 +22,4 @@ spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_j
 Write-Host "🎨 Reapplying default settings..."
 spicetify apply
 
-Write-Host "✅ Lucid theme uninstalled successfully!" -ForegroundColor Green
+Write-Host "✅ Glassify theme uninstalled successfully!" -ForegroundColor Green

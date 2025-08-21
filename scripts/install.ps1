@@ -1,59 +1,80 @@
-$ErrorActionPreference = 'Stop'
+param(
+    [string]$version = "latest",
+    [string]$mode = "Remote"
+)
 
+$ErrorActionPreference = 'Stop'
+$mode_set = $false
+
+# Parse command-line arguments
+for ($i = 0; $i -lt $args.Count; $i++) {
+    switch ($args[$i]) {
+        '--version' {
+            $version = $args[$i + 1]
+            $i++
+        }
+        '--mode' {
+            $mode = $args[$i + 1]
+            $mode_set = $true
+            $i++
+        }
+        default {
+            Write-Host "Unknown option: $($args[$i])" -ForegroundColor Red
+            Write-Host "Usage: script.ps1 [--version v1.0.0|...] [--mode Remote|Local]"
+            exit 1
+        }
+    }
+}
+
+# Ignore mode if a specific version is specified
+if ($version -ne "latest" -and $mode_set) {
+    Write-Host "⚠️  Ignoring --mode because --version is specified."
+    $mode = "Remote"
+}
+
+if ($mode -ne "Remote" -and $mode -ne "Local") {
+    Write-Host "❌ Invalid mode: $mode" -ForegroundColor Red
+    Write-Host "Allowed values: Remote, Local"
+    exit 1
+}
+
+# Check if Spicetify is installed
 if (-not (Get-Command spicetify -ErrorAction SilentlyContinue)) {
     Write-Host "❌ Spicetify is not installed or not in PATH." -ForegroundColor Red
     exit 1
 }
 
-$modeChoice = $Host.UI.PromptForChoice(
-    'Installation Mode',
-    'Choose how to install Lucid theme:',
-    @('&Remote (auto-update)', '&Local (static files)'),
-    0
-)
-$mode = if ($modeChoice -eq 0) { 'Remote' } else { 'Local' }
+$themeName = "Glassify"
+$themeDir = Join-Path (Split-Path (spicetify -c)) "Themes\$themeName"
+New-Item -Path $themeDir -ItemType Directory -Force | Out-Null
 
-$branchChoice = $Host.UI.PromptForChoice(
-    'Select Branch',
-    'Choose which branch to install from:',
-    @('&main', '&beta'),
-    0
-)
-$branch = if ($branchChoice -eq 0) { 'main' } else { 'beta' }
+# Base URL for theme files
+$baseUrl = "https://sanooj.is-a.dev/spicetify-glassify/versions/$version"
 
-$themeName = 'Lucid'
-$themePath = "$(spicetify path userdata)\Themes\$themeName"
-$configPath = spicetify path -c
-$baseUrl = "https://raw.githubusercontent.com/sanoojes/Spicetify-Lucid/$branch"
-
-# File URLs
-if ($mode -eq 'Remote') {
-    $files = @{
-        'color.ini' = "$baseUrl/src/color.ini"
-        'user.css'  = "$baseUrl/remote/user.css"
-        'theme.js'  = "$baseUrl/remote/theme.js"
-    }
+# Determine URLs based on mode
+if ($mode -eq "Remote") {
+    $userCssUrl = "$baseUrl/remote/user.css"
+    $themeJsUrl = "$baseUrl/remote/theme.js"
 } else {
-    $files = @{
-        'color.ini' = "$baseUrl/src/color.ini"
-        'user.css'  = "$baseUrl/src/user.css"
-        'theme.js'  = "$baseUrl/src/theme.js"
-    }
+    $userCssUrl = "$baseUrl/$version/user.css"
+    $themeJsUrl = "$baseUrl/$version/theme.js"
 }
 
-New-Item -Path $themePath -ItemType Directory -Force | Out-Null
+$colorIniUrl = "$baseUrl/$version/color.ini"
 
-foreach ($file in $files.GetEnumerator()) {
-    $outPath = Join-Path $themePath $file.Key
-    Invoke-WebRequest -Uri $file.Value -OutFile $outPath -UseBasicParsing
-    Write-Host "✓ Downloaded: $file.Key" -ForegroundColor Cyan
-}
+Write-Host "📥 Downloading Glassify theme ($mode mode) version '$version'..."
 
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
+# Download theme files
+Invoke-WebRequest -Uri $colorIniUrl -OutFile (Join-Path $themeDir "color.ini") -UseBasicParsing
+Invoke-WebRequest -Uri $userCssUrl -OutFile (Join-Path $themeDir "user.css") -UseBasicParsing
+Invoke-WebRequest -Uri $themeJsUrl -OutFile (Join-Path $themeDir "theme.js") -UseBasicParsing
+
+Write-Host "🎨 Applying theme..."
 spicetify config current_theme $themeName
 spicetify config color_scheme 'dark'
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 spicetify apply
 
-Write-Host "`n🎉 Lucid theme installed successfully!"
+Write-Host "✅ Glassify theme installed successfully!"
 Write-Host "→ Mode: $mode"
-Write-Host "→ Branch: $branch" -ForegroundColor Green
+Write-Host "→ Version: $version"
