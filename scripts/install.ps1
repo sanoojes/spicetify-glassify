@@ -1,6 +1,6 @@
 param(
-    [string]$version = "latest",
-    [string]$mode = "Remote"
+    [string]$version = "remote",
+    [string]$mode = "remote"
 )
 
 $ErrorActionPreference = 'Stop'
@@ -27,7 +27,7 @@ for ($i = 0; $i -lt $args.Count; $i++) {
 }
 
 # Ignore mode if a specific version is specified
-if ($version -ne "latest" -and $mode_set) {
+if ($version -ne "remote" -and $mode_set) {
     Write-Host "⚠️  Ignoring --mode because --version is specified."
     $mode = "Remote"
 }
@@ -49,18 +49,12 @@ $themeDir = Join-Path (Split-Path (spicetify -c)) "Themes\$themeName"
 New-Item -Path $themeDir -ItemType Directory -Force | Out-Null
 
 # Base URL for theme files
-$baseUrl = "https://sanooj.is-a.dev/spicetify-glassify/versions/$version"
+$baseUrl = "https://sanooj.is-a.dev/spicetify-glassify/versions/"
 
 # Determine URLs based on mode
-if ($mode -eq "Remote") {
-    $userCssUrl = "$baseUrl/remote/user.css"
-    $themeJsUrl = "$baseUrl/remote/theme.js"
-} else {
-    $userCssUrl = "$baseUrl/$version/user.css"
-    $themeJsUrl = "$baseUrl/$version/theme.js"
-}
-
-$colorIniUrl = "$baseUrl/$version/color.ini"
+$userCssUrl = "$baseUrl/$version/user.css"
+$themeJsUrl = "$baseUrl/$version/theme.js"
+$colorIniUrl = "$baseUrl/latest/color.ini"
 
 Write-Host "📥 Downloading Glassify theme ($mode mode) version '$version'..."
 

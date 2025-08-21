@@ -1,75 +1,87 @@
-param(
-    [string]$version = "latest",
-    [string]$mode = "Remote"
-)
+#!/bin/sh
+set -e
 
-$ErrorActionPreference = 'Stop'
-$mode_set = $false
+version="remote"
+mode="remote"
+mode_set=0
 
 # Parse command-line arguments
-for ($i = 0; $i -lt $args.Count; $i++) {
-    switch ($args[$i]) {
-        '--version' {
-            $version = $args[$i + 1]
-            $i++
-        }
-        '--mode' {
-            $mode = $args[$i + 1]
-            $mode_set = $true
-            $i++
-        }
-        default {
-            Write-Host "Unknown option: $($args[$i])" -ForegroundColor Red
-            Write-Host "Usage: script.ps1 [--version v1.0.0|v1.0.1|...] [--mode Remote|Local]"
+while [ "$#" -gt 0 ]; do
+    case "$1" in
+        --version)
+            version="$2"
+            shift 2
+            ;;
+        --mode)
+            mode="$2"
+            mode_set=1
+            shift 2
+            ;;
+        *)
+            echo "Unknown option: $1"
+            echo "Usage: $0 [--version v1.0.0|v1.0.1|...] [--mode remote|local]"
             exit 1
-        }
-    }
-}
+            ;;
+    esac
+done
 
 # Ignore mode if a specific version is specified
-if ($version -ne "latest" -and $mode_set) {
-    Write-Host "⚠️  Ignoring --mode because --version is specified."
-    $mode = "Remote"
-}
+if [ "$version" != "latest" ] && [ "$mode_set" -eq 1 ]; then
+    echo "⚠️ Ignoring --mode because --version is specified."
+    mode="remote"
+fi
 
-if ($mode -ne "Remote" -and $mode -ne "Local") {
-    Write-Host "❌ Invalid mode: $mode" -ForegroundColor Red
-    Write-Host "Allowed values: Remote, Local"
+# Validate mode
+if [ "$mode" != "remote" ] && [ "$mode" != "local" ]; then
+    echo "❌ Invalid mode: $mode"
+    echo "Allowed values: remote, local"
     exit 1
+fi
+
+# Set theme directories and URLs
+theme_name="Glassify"
+theme_dir="$(dirname "$(spicetify -c)")/Themes/${theme_name}"
+mkdir -p "$theme_dir"
+
+base_url="https://sanooj.is-a.dev/spicetify-glassify/versions"
+user_css_url="$version/$base_url/user.css"
+theme_js_url="$version/$base_url/theme.js"
+color_ini_url="$base_url/latest/color.ini"
+
+echo "$user_css_url"
+echo "$theme_js_url"
+
+# Function to download and check file
+download_file() {
+    url="$1"
+    dest="$2"
+    
+    # Use curl with -f to fail on HTTP errors
+    if ! curl -fsSL --output "$dest" "$url"; then
+        echo "❌ Failed to download $url (404 or network error)"
+        exit 1
+    fi
+
+    # Check if file is empty
+    if [ ! -s "$dest" ]; then
+        echo "❌ Downloaded file $dest is empty"
+        exit 1
+    fi
 }
 
-# Check Spicetify
-if (-not (Get-Command spicetify -ErrorAction SilentlyContinue)) {
-    Write-Host "❌ Spicetify is not installed or not in PATH." -ForegroundColor Red
-    exit 1
-}
+# Download theme files
+echo "📥 Downloading Lucid theme ($mode mode) version '$version'..."
+download_file "$color_ini_url" "${theme_dir}/color.ini"
+download_file "$user_css_url" "${theme_dir}/user.css"
+download_file "$theme_js_url" "${theme_dir}/theme.js"
 
-$themeName = "Glassify"
-$themeDir = Join-Path (Split-Path (spicetify -c)) "Themes\$themeName"
-New-Item -Path $themeDir -ItemType Directory -Force | Out-Null
+echo "✅ Files downloaded to: $theme_dir"
 
-$baseUrl = "https://sanooj.is-a.dev/spicetify-glassify/versions/$version"
-
-if ($mode -eq "Remote") {
-    $userCssUrl = "$baseUrl/remote/user.css"
-    $themeJsUrl = "$baseUrl/remote/theme.js"
-} else {
-    $userCssUrl = "$baseUrl/$version/user.css"
-    $themeJsUrl = "$baseUrl/$version/theme.js"
-}
-
-$colorIniUrl = "$baseUrl/$version/color.ini"
-
-Write-Host "📥 Downloading Glassify theme ($mode mode) version '$version'..."
-
-Invoke-WebRequest -Uri $colorIniUrl -OutFile (Join-Path $themeDir "color.ini") -UseBasicParsing
-Invoke-WebRequest -Uri $userCssUrl -OutFile (Join-Path $themeDir "user.css") -UseBasicParsing
-Invoke-WebRequest -Uri $themeJsUrl -OutFile (Join-Path $themeDir "theme.js") -UseBasicParsing
-
-Write-Host "🎨 Applying theme..."
-spicetify config current_theme $themeName
-spicetify config color_scheme 'dark'
+# Apply theme
+echo "🎨 Applying theme..."
+spicetify config current_theme "$theme_name"
+spicetify config color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 spicetify apply
 
-Write-Host "✅ All done!"
+echo "✅ All done!"
