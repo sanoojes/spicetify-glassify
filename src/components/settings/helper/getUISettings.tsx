@@ -1,6 +1,6 @@
 import type appStore from '@app/store/appStore.ts';
 import type { SectionProps } from '@app/types/settingSchema.ts';
-import { isWindows } from '@app/utils/platform.ts';
+import { isLinux } from '@app/utils/platform.ts';
 
 export const getUISettings = (state: ReturnType<typeof appStore.getState>): SectionProps => {
   return {
@@ -9,7 +9,7 @@ export const getUISettings = (state: ReturnType<typeof appStore.getState>): Sect
     groups: [
       {
         id: 'window-controls',
-        visible: isWindows,
+        visible: () => !isLinux(),
         groupName: 'Window Controls',
         components: [
           {
