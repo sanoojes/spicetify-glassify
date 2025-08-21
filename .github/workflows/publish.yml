@@ -87,6 +87,10 @@ jobs:
           git rm -rf !(assets|.git) || true
           shopt -u extglob
 
+          # Merge assets from main branch
+          git fetch origin main
+          git checkout origin/main -- assets || echo "No assets folder on main"
+
           VERSION=${{ needs.build.outputs.version }}
 
           # Create versioned folders
@@ -110,7 +114,7 @@ jobs:
 
           cp README.md versions/README.md
 
-          git add versions/ README.md
+          git add versions/ README.md assets
           git commit -m "Release $VERSION" || echo "No changes to commit"
           git push origin releases --force
 
@@ -131,6 +135,11 @@ jobs:
           git fetch origin main
           git checkout origin/main -- README.md
           cp README.md index.md
+
+      - name: Merge assets from main
+        run: |
+          git fetch origin main
+          git checkout origin/main -- assets || echo "No assets folder on main"
 
       - name: Create _config.yml for Jekyll
         run: |
@@ -164,10 +173,9 @@ jobs:
           git rm -rf !(assets|.git) || true
           shopt -u extglob
 
-          # Copy Jekyll site, but do not overwrite assets
-          rsync -a --exclude 'assets/' _site/ ./
+          # Copy Jekyll site
+          rsync -a _site/ ./  # assets already merged from main
 
-          cp -r _site/* ./
           git add .
           git commit -m "Deploy site ${{ needs.build.outputs.version }}" || echo "No changes to commit"
           git push origin gh-pages --force
