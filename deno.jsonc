@@ -1,0 +1,46 @@
+{
+  "version": "1.0.0",
+  "tasks": {
+    "dev": "deno run -A builder/builder.ts --watch --copyToSpice",
+    "build": "deno run -A builder/builder.ts --minify",
+    "check": "deno run -A npm:@biomejs/biome check --write",
+    "lint": "deno run -A npm:@biomejs/biome check",
+    "reload": "deno run -A builder/builder.ts --reload --minify",
+    "clean-build": "deno task clean && deno task build",
+    "clean": "deno run -A -e \"await Deno.remove('dist', { recursive: true }).catch(()=>{})\""
+  },
+  "imports": {
+    // relative imports.
+    // new relative imports should be added in tsconfig.json
+    "@builder/": "./builder/", // for builder
+    "@icons/": "./assets/icons/",
+
+    // Relative imports for extension
+    "@app/": "./src/",
+    "@fluentui/react-icons": "npm:@fluentui/react-icons@^2.0.307",
+    "lodash": "npm:lodash@^4.17.21",
+
+    // react things.
+    "react": "npm:react@^19.1.1",
+    "react-color-palette": "npm:react-color-palette@^7.3.1",
+    "react-dom": "npm:react-dom@^19.1.1",
+    "@types/react": "npm:@types/react@^19.1.9",
+    "@types/react-dom": "npm:@types/react-dom@^19.1.7",
+
+    "@std/cli": "jsr:@std/cli@^1.0.18",
+    "@std/path": "jsr:@std/path@^1.1.0",
+
+    "esbuild": "npm:esbuild@^0.25.8",
+    "esbuild-plugin-svgr": "npm:esbuild-plugin-svgr@^3.1.1",
+    "three": "npm:three@^0.179.1",
+    "zod": "npm:zod@^4.0.17",
+    "zustand": "npm:zustand@^5.0.8"
+  },
+
+  "compilerOptions": {
+    "strict": true,
+    "lib": ["deno.window", "dom", "es2020"],
+    "jsx": "react"
+  },
+  "nodeModulesDir": "auto"
+}
