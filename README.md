@@ -23,11 +23,18 @@
 - **Recommended Spicetify**: `v2.40.11` or later
 - **Recommended Spotify**: `v1.2.63` or later
 
+## 📦 Older Versions
+
+If you want previous releases, you can find them here:
+[Older Releases](https://sanooj.is-a.dev/spicetify-glassify/versions/)
+
+> Each release contains full theme files.
+
 ---
 
 ## 💬 Community & Support
 
-- 🗨️ [Discord (Lucid Theme Server)](https://discord.gg/PWEyKduwJh) **_am lazy to create a new server for spicetify things_**
+- 🗨️ [Discord (Lucid Theme Server)](https://discord.gg/PWEyKduwJh) – _I’m lazy to create a separate Spicetify server_
 - 🐛 [GitHub Issues](https://github.com/sanoojes/Spicetify-Glassify/issues)
 
 ---
@@ -80,22 +87,25 @@ curl -fsSL https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify@$TAG/scripts/
 ### 🔸 Manual Installation
 
 1. [Download ZIP](https://github.com/sanoojes/Spicetify-Glassify)
-2. Find your themes folder:
 
-   ```bash
-   spicetify path userdata
-   ```
+   - For older releases, go to [Releases](https://github.com/sanoojes/Spicetify-Glassify/releases)
+
+2. Find your Spicetify themes folder:
+
+```bash
+spicetify path userdata
+```
 
 3. Create a `Lucid` folder inside `Themes`
 4. Extract contents of `/src` (or `/releases/<tag>` for a specific version) into `Lucid`
 5. Apply the theme:
 
-   ```bash
-   spicetify config current_theme Lucid
-   spicetify config color_scheme dark
-   spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
-   spicetify apply
-   ```
+```bash
+spicetify config current_theme Lucid
+spicetify config color_scheme dark
+spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
+spicetify apply
+```
 
 ---
 
