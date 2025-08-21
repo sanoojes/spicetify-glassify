@@ -44,7 +44,7 @@ If you want previous releases, you can find them here:
 ### 🔸 Spicetify Marketplace (Recommended)
 
 1. [Install Marketplace](https://github.com/spicetify/marketplace/wiki/Installation)
-2. Search **"Lucid"** and click **Install**
+2. Search **"Glassify"** and click **Install**
 
 ---
 
@@ -52,35 +52,56 @@ If you want previous releases, you can find them here:
 
 #### Windows (PowerShell)
 
-**Latest version:**
+**Install latest version:**
 
 ```powershell
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-iex "& { $(iwr -useb 'https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify@latest/scripts/install.ps1') }"
+iex "& { $(iwr -useb 'https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify/scripts/install.ps1') }"
 ```
 
-**Specific release/tag:**
+**Install latest version (Local):**
 
 ```powershell
-$tag = "v1.2.3"  # Replace with desired release tag
-[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-iex "& { $(iwr -useb "https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify@$tag/scripts/install.ps1") }"
+iex "& { $(iwr -useb 'https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify/scripts/install.ps1') } -- --mode Local"
 ```
+
+**Install specific version (Local):**
+
+```powershell
+iex "& { $(iwr -useb 'https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify/scripts/install.ps1') } -- --version v1.2.3 --mode Local"
+```
+
+**Notes:**
+
+- `--version <tag>` — Set the theme version. Default is `latest`.
+- `--mode <Remote|Local>` — Choose between downloading Remote or Local files. Default is `Remote`.
+- Requires PowerShell 5.1 or higher and Spicetify installed.
+
+---
 
 #### Linux/macOS (Bash)
 
-**Latest version:**
+**Install latest version:**
 
 ```bash
 curl -fsSL https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify/scripts/install.sh | sh
 ```
 
-**Specific release/tag:**
+**Install latest version in Locally:**
 
 ```bash
-TAG="v1.2.3"  # Replace with desired release tag
-curl -fsSL https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify@$TAG/scripts/install.sh | sh
+curl -fsSL https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify/scripts/install.sh | sh -s -- --mode Local
 ```
+
+**Install specific version (Local mode):**
+
+```bash
+curl -fsSL https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify/scripts/install.sh | sh -s -- --version v1.2.3 --mode Local
+```
+
+**Notes:**
+
+- `--version <tag>` — Set the theme version. Default is `latest`.
+- `--mode <Remote|Local>` — Choose between downloading Remote or Local files. Default is `Remote`.
 
 ---
 
@@ -96,12 +117,12 @@ curl -fsSL https://cdn.jsdelivr.net/gh/sanoojes/Spicetify-Glassify@$TAG/scripts/
 spicetify path userdata
 ```
 
-3. Create a `Lucid` folder inside `Themes`
-4. Extract contents of `/src` (or `/releases/<tag>` for a specific version) into `Lucid`
+3. Create a `Glassify` folder inside `Themes`
+4. Extract contents of `/src` (or `/releases/<tag>` for a specific version) into `Glassify`
 5. Apply the theme:
 
 ```bash
-spicetify config current_theme Lucid
+spicetify config current_theme Glassify
 spicetify config color_scheme dark
 spicetify config inject_css 1 replace_colors 1 overwrite_assets 1 inject_theme_js 1
 spicetify apply
