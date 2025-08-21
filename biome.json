@@ -15,6 +15,9 @@
   "linter": {
     "enabled": true,
     "rules": {
+      "complexity": {
+        "noImportantStyles": "error"
+      },
       "style": {
         "useImportType": "on",
         "noCommonJs": "error"
