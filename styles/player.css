@@ -367,16 +367,18 @@ div.cover-art-icon {
   .nw2W4ZMdICuBo08Tzxg9,
   .lyrics-config-button-container,
   .lyrics-lyricsContainer-SyncedLyricsPage,
-  div[data-testid="NPV_Panel_OpenDiv"],
+  div[data-testid="NPV_Panel_OpenDiv"] {
+    padding-bottom: calc(var(--player-height, 5rem) + var(--panel-gap)) !important;
+  }
   .main-yourLibraryX-libraryRootlist {
-    padding-bottom: var(--player-height, 5rem) !important;
+    margin-bottom: calc(var(--player-height, 5rem) + var(--panel-gap)) !important;
   }
   .marketplace-add-snippet-btn {
     bottom: var(--player-height, 5rem) !important;
   }
 
   .main-view-container__scroll-node-child {
-    padding-bottom: calc(var(--player-height, 5rem) - var(--panel-gap)) !important;
+    padding-bottom: calc(var(--player-height, 5rem) + var(--panel-gap)) !important;
   }
 }
 
