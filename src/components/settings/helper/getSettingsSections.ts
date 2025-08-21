@@ -4,11 +4,13 @@ import { getPlayerNextCard } from '@app/components/settings/helper/getPlayerNext
 import { getPlayerSettings } from '@app/components/settings/helper/getPlayerSettings.tsx';
 import appStore from '@app/store/appStore.ts';
 import type { SectionProps } from '@app/types/settingSchema.ts';
+import { getUISettings } from './getUISettings.tsx';
 import { getUnderMainViewSettings } from './getUnderMainViewSettings.tsx';
 
 export default function getSettingsSections(state = appStore.getState()): SectionProps[] {
   return [
     getBackgroundSettings(state),
+    getUISettings(state),
     getPlayerNextCard(state),
     getUnderMainViewSettings(state),
     getPlayerSettings(state),

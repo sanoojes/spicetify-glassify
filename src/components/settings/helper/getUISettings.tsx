@@ -6,10 +6,10 @@ export const getUISettings = (state: ReturnType<typeof appStore.getState>): Sect
   return {
     id: 'ui-settings',
     sectionName: 'UI Settings',
+    visible: () => !isLinux(),
     groups: [
       {
         id: 'window-controls',
-        visible: () => !isLinux(),
         groupName: 'Window Controls',
         components: [
           {
