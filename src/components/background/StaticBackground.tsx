@@ -1,9 +1,9 @@
-import type { BackgroundState } from "@app/store/appStore.ts";
-import appStore from "@app/store/appStore.ts";
-import serializeFilters from "@app/utils/dom/serializeFilters.ts";
-import type { FC } from "react";
-import React from "react";
-import { useStore } from "zustand";
+import type { BackgroundState } from '@app/store/appStore.ts';
+import appStore from '@app/store/appStore.ts';
+import serializeFilters from '@app/utils/dom/serializeFilters.ts';
+import type { FC } from 'react';
+import React from 'react';
+import { useStore } from 'zustand';
 
 const StaticBackground: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
   const filter = useStore(appStore, (state) => state.bg.options.filter);
@@ -22,13 +22,9 @@ const StaticBackground: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
 
 export default StaticBackground;
 
-function getStaticImageUrl(
-  options: Partial<BackgroundState["options"]>
-): string {
+function getStaticImageUrl(options: Partial<BackgroundState['options']>): string {
   const { imageMode, imageSrc } = options;
-  if (imageMode === "custom")
-    return imageSrc ? `url(${imageSrc})` : "var(--np-img-url)";
-  if (imageMode === "page")
-    return "var(--page-desktop-img-url, var(--page-img-url))";
-  return "var(--np-img-url)";
+  if (imageMode === 'custom') return imageSrc ? `url(${imageSrc})` : 'var(--np-img-url)';
+  if (imageMode === 'page') return 'var(--page-desktop-img-url, var(--page-img-url))';
+  return 'var(--np-img-url)';
 }

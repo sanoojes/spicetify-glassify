@@ -6,9 +6,7 @@
     "readme": "README.md",
     "usercss": "https://sanooj.is-a.dev/spicetify-glassify/versions/latest/user.css",
     "schemes": "https://sanooj.is-a.dev/spicetify-glassify/versions/latest/colors.ini",
-    "include": [
-      "https://sanooj.is-a.dev/spicetify-glassify/versions/latest/theme.js"
-    ],
+    "include": ["https://sanooj.is-a.dev/spicetify-glassify/versions/latest/theme.js"],
     "authors": [
       {
         "name": "Sanooj ES",

@@ -1,6 +1,6 @@
-import { merge } from "lodash";
-import { combine, persist, subscribeWithSelector } from "zustand/middleware";
-import { createStore } from "zustand/vanilla";
+import { merge } from 'lodash';
+import { combine, persist, subscribeWithSelector } from 'zustand/middleware';
+import { createStore } from 'zustand/vanilla';
 
 // deno-lint-ignore ban-types
 type Stringify<T extends string> = T | (string & {}); // just to trick the compiler
@@ -14,8 +14,8 @@ export type CSSFilter = {
   blur?: number;
 };
 
-type BackgroundMode = Stringify<"solid" | "static" | "animated">;
-type BackgroundImageMode = Stringify<"custom" | "player" | "page">;
+type BackgroundMode = Stringify<'solid' | 'static' | 'animated'>;
+type BackgroundImageMode = Stringify<'custom' | 'player' | 'page'>;
 export type BackgroundState = {
   mode: BackgroundMode;
   options: {
@@ -32,7 +32,7 @@ export type BackgroundState = {
   };
 };
 
-type PlayerTypes = Stringify<"compact" | "default">;
+type PlayerTypes = Stringify<'compact' | 'default'>;
 export type PlayerStyle = {
   height: number;
   sliderHeight: number;
@@ -55,7 +55,7 @@ export type NextSongCardState = {
   coverArtSize: number;
   removeNextUp: boolean;
   isFloating: boolean;
-  position: Stringify<"left" | "right">;
+  position: Stringify<'left' | 'right'>;
 };
 export type PlayerState = {
   mode: PlayerTypes;
@@ -65,9 +65,7 @@ export type PlayerState = {
   compactStyle: PlayerStyle;
   nextSongCard: NextSongCardState;
 };
-type UnderMainViewTypes = Stringify<
-  "default" | "playing" | "custom-img" | "custom-color" | "none"
->;
+type UnderMainViewTypes = Stringify<'default' | 'playing' | 'custom-img' | 'custom-color' | 'none'>;
 export type UnderMainViewState = {
   type: UnderMainViewTypes;
 
@@ -97,7 +95,7 @@ const PLAYER_BG_FILTER = {
 
 export const DEFAULT_STATE: AppState = {
   bg: {
-    mode: "static",
+    mode: 'static',
     options: {
       filter: {
         blur: 32,
@@ -106,14 +104,14 @@ export const DEFAULT_STATE: AppState = {
         brightness: 40,
         opacity: 100,
       },
-      color: "#060606",
-      imageMode: "player",
-      imageSrc: "https://picsum.photos/1920/1080",
+      color: '#060606',
+      imageMode: 'player',
+      imageSrc: 'https://picsum.photos/1920/1080',
       autoStopAnimation: false,
     },
   },
   umv: {
-    type: "default",
+    type: 'default',
     isScrolling: false,
     isScaling: true,
     filter: {
@@ -123,11 +121,11 @@ export const DEFAULT_STATE: AppState = {
       brightness: 80,
       opacity: 80,
     },
-    customColor: "#060606",
-    customUrl: "https://picsum.photos/1920/1080",
+    customColor: '#060606',
+    customUrl: 'https://picsum.photos/1920/1080',
   },
   player: {
-    mode: "default",
+    mode: 'default',
     nextSongCard: {
       show: false,
       isFloating: true,
@@ -138,7 +136,7 @@ export const DEFAULT_STATE: AppState = {
       paddingY: 8,
       coverArtSize: 32,
       removeNextUp: true,
-      position: "left",
+      position: 'left',
     },
     isFloating: true,
     hideExtraIcon: true,
@@ -170,24 +168,19 @@ export const DEFAULT_STATE: AppState = {
 
 type AppStateSetters = {
   setBg: (bg: Partial<BackgroundState>) => void;
-  setBgOptions: (options: Partial<BackgroundState["options"]>) => void;
-  setBgFilter: (filter: Partial<BackgroundState["options"]["filter"]>) => void;
+  setBgOptions: (options: Partial<BackgroundState['options']>) => void;
+  setBgFilter: (filter: Partial<BackgroundState['options']['filter']>) => void;
 
   setPlayer: (player: Partial<PlayerState>) => void;
-  setPlayerNextCard: (
-    nextSongCard: Partial<PlayerState["nextSongCard"]>
-  ) => void;
+  setPlayerNextCard: (nextSongCard: Partial<PlayerState['nextSongCard']>) => void;
   setPlayerBackdropFilter: (
-    mode: PlayerState["mode"],
-    filter: Partial<PlayerStyle["backdropFilter"]>
+    mode: PlayerState['mode'],
+    filter: Partial<PlayerStyle['backdropFilter']>
   ) => void;
-  setPlayerStyles: (
-    mode: PlayerState["mode"],
-    styles: Partial<PlayerStyle>
-  ) => void;
+  setPlayerStyles: (mode: PlayerState['mode'], styles: Partial<PlayerStyle>) => void;
 
   setUMV: (umv: Partial<UnderMainViewState>) => void;
-  setUMVFilter: (filter: Partial<UnderMainViewState["filter"]>) => void;
+  setUMVFilter: (filter: Partial<UnderMainViewState['filter']>) => void;
 
   setWindowControlHeight: (windowControlHeight: number) => void;
 
@@ -219,8 +212,7 @@ const appStore = createStore<AppState & AppStateSetters>()(
             },
           }),
 
-        setWindowControlHeight: (windowControlHeight) =>
-          set({ windowControlHeight }),
+        setWindowControlHeight: (windowControlHeight) => set({ windowControlHeight }),
         setUMV: (umv) => set({ umv: { ...get().umv, ...umv } }),
         setUMVFilter: (filter) =>
           set({
@@ -239,7 +231,7 @@ const appStore = createStore<AppState & AppStateSetters>()(
             },
           }),
         setPlayerBackdropFilter: (mode, filter) => {
-          const key = mode === "compact" ? "compactStyle" : "defaultStyle";
+          const key = mode === 'compact' ? 'compactStyle' : 'defaultStyle';
           set({
             player: {
               ...get().player,
@@ -254,7 +246,7 @@ const appStore = createStore<AppState & AppStateSetters>()(
           });
         },
         setPlayerStyles: (mode, styles) => {
-          const key = mode === "compact" ? "compactStyle" : "defaultStyle";
+          const key = mode === 'compact' ? 'compactStyle' : 'defaultStyle';
           set({
             player: {
               ...get().player,
@@ -275,13 +267,13 @@ const appStore = createStore<AppState & AppStateSetters>()(
         resetStore: () => {
           try {
             set(DEFAULT_STATE);
-            localStorage.removeItem("glassify:settings");
+            localStorage.removeItem('glassify:settings');
           } catch {}
         },
       }))
     ),
     {
-      name: "glassify:settings",
+      name: 'glassify:settings',
       version: 1,
       migrate: (persistedState) => merge(DEFAULT_STATE, persistedState ?? {}),
     }

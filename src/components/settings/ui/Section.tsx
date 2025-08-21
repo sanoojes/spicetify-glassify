@@ -1,11 +1,11 @@
-import type { SectionProps } from "@app/types/settingSchema.ts";
-import Group from "@app/components/settings/ui/Group.tsx";
-import React, { type FC, memo } from "react";
+import Group from '@app/components/settings/ui/Group.tsx';
+import type { SectionProps } from '@app/types/settingSchema.ts';
+import React, { type FC, memo } from 'react';
 
 const Section: FC<SectionProps> = ({ groups, sectionName, visible }) => {
   const isVisible = visible ? visible() : true;
   return (
-    <div className={`section${!isVisible ? " hidden" : ""}`}>
+    <div className={`section${!isVisible ? ' hidden' : ''}`}>
       <h2 className="section-header encore-text encore-text-title-small encore-internal-color-text-base">
         {sectionName}
       </h2>

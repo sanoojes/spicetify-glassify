@@ -441,8 +441,8 @@ input.glassify-input {
   cursor: all-scroll;
   width: 100%;
   position: relative;
-  background-image: linear-gradient(to bottom, transparent, black),
-    linear-gradient(to right, white, transparent);
+  background-image:
+    linear-gradient(to bottom, transparent, black), linear-gradient(to right, white, transparent);
   border-radius: 8px 8px 0 0;
 }
 
@@ -462,16 +462,7 @@ input.glassify-input {
   position: relative;
   width: 100%;
   height: 2rem;
-  background-image: linear-gradient(
-    to right,
-    red,
-    #ff0,
-    #0f0,
-    #0ff,
-    #00f,
-    #f0f,
-    red
-  );
+  background-image: linear-gradient(to right, red, #ff0, #0f0, #0ff, #00f, #f0f, red);
   border-radius: 8px;
 }
 

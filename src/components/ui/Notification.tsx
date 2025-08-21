@@ -1,6 +1,6 @@
-import UI from "@app/components/ui/index.ts";
-import { Dismiss16Filled } from "@fluentui/react-icons";
-import React, { type FC, type ReactNode, useEffect, useState } from "react";
+import UI from '@app/components/ui/index.ts';
+import { Dismiss16Filled } from '@fluentui/react-icons';
+import React, { type FC, type ReactNode, useEffect, useState } from 'react';
 
 type NotificationProps = {
   message: ReactNode;
@@ -34,11 +34,7 @@ const Notification: FC<NotificationProps> = ({
   };
 
   return (
-    <div
-      className={`notification${isError ? " error" : ""}${
-        !visible ? " fade-out" : ""
-      }`}
-    >
+    <div className={`notification${isError ? ' error' : ''}${!visible ? ' fade-out' : ''}`}>
       <span>{message}</span>
       <UI.Button
         className="notification-close"

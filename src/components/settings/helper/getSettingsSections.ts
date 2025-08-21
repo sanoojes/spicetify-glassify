@@ -1,14 +1,12 @@
-import type { SectionProps } from "@app/types/settingSchema.ts";
-import { getBackgroundSettings } from "@app/components/settings/helper/getBackgroundSettings.tsx";
-import appStore from "@app/store/appStore.ts";
-import { getPlayerSettings } from "@app/components/settings/helper/getPlayerSettings.tsx";
-import { getPlayerNextCard } from "@app/components/settings/helper/getPlayerNextCard.tsx";
-import { getAdvancedSettings } from "@app/components/settings/helper/getAdvancedSettings.tsx";
-import { getUnderMainViewSettings } from "./getUnderMainViewSettings.tsx";
+import { getAdvancedSettings } from '@app/components/settings/helper/getAdvancedSettings.tsx';
+import { getBackgroundSettings } from '@app/components/settings/helper/getBackgroundSettings.tsx';
+import { getPlayerNextCard } from '@app/components/settings/helper/getPlayerNextCard.tsx';
+import { getPlayerSettings } from '@app/components/settings/helper/getPlayerSettings.tsx';
+import appStore from '@app/store/appStore.ts';
+import type { SectionProps } from '@app/types/settingSchema.ts';
+import { getUnderMainViewSettings } from './getUnderMainViewSettings.tsx';
 
-export default function getSettingsSections(
-  state = appStore.getState()
-): SectionProps[] {
+export default function getSettingsSections(state = appStore.getState()): SectionProps[] {
   return [
     getBackgroundSettings(state),
     getPlayerNextCard(state),

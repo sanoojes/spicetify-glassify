@@ -1,9 +1,6 @@
-import UI from "@app/components/ui/index.ts";
-import {
-  ChevronLeft16Filled,
-  ChevronRight16Filled,
-} from "@fluentui/react-icons";
-import React, { useEffect, useRef, useState } from "react";
+import UI from '@app/components/ui/index.ts';
+import { ChevronLeft16Filled, ChevronRight16Filled } from '@fluentui/react-icons';
+import React, { useEffect, useRef, useState } from 'react';
 
 type CarouselProps = {
   categories: string[];
@@ -28,13 +25,13 @@ const Carousel = ({
     setSelectedIndex(defaultIndex);
   }, [defaultIndex]);
 
-  const scroll = (dir: "left" | "right") => {
+  const scroll = (dir: 'left' | 'right') => {
     const el = scrollRef.current;
     if (el) {
       const amount = scrollAmount ?? el.offsetWidth / 2;
       el.scrollBy({
-        left: dir === "left" ? -amount : amount,
-        behavior: "smooth",
+        left: dir === 'left' ? -amount : amount,
+        behavior: 'smooth',
       });
     }
   };
@@ -55,12 +52,12 @@ const Carousel = ({
 
     checkScrollPosition();
 
-    el.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
+    el.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
 
     return () => {
-      el.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      el.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
     };
   }, [categories]);
 
@@ -73,20 +70,20 @@ const Carousel = ({
     <div className="search-searchCategory-wrapper carousel-wrapper">
       <div
         className={`search-searchCategory-contentArea${
-          atStart ? " at-start U8wi3gXSb248Imbxy4gc" : ""
-        }${atEnd ? " at-end Yjx8QrpjqgjqQPj4KWCh" : ""}${
-          atStart && atEnd ? "a2NTH51fJWzWsds0OYv_" : ""
+          atStart ? ' at-start U8wi3gXSb248Imbxy4gc' : ''
+        }${atEnd ? ' at-end Yjx8QrpjqgjqQPj4KWCh' : ''}${
+          atStart && atEnd ? 'a2NTH51fJWzWsds0OYv_' : ''
         }`}
       >
         <div
           className="search-searchCategory-categoryGrid"
-          style={{ userSelect: "none", scrollBehavior: "auto" }}
+          style={{ userSelect: 'none', scrollBehavior: 'auto' }}
           ref={scrollRef}
         >
           {categories.map((label, index) => (
             <div key={label} className="search-searchCategory-categoryGridItem">
               <UI.Button
-                variant={selectedIndex === index ? "primary" : "default"}
+                variant={selectedIndex === index ? 'primary' : 'default'}
                 onClick={() => handleCategoryClick(index)}
               >
                 {label}
@@ -98,16 +95,16 @@ const Carousel = ({
       <div className="search-searchCategory-carousel">
         <UI.Button
           variant="icon-no-border"
-          className={`${atStart ? "hide" : "show"}`}
-          onClick={() => scroll("left")}
+          className={`${atStart ? 'hide' : 'show'}`}
+          onClick={() => scroll('left')}
         >
           <ChevronLeft16Filled className="e-9890-icon e-9890-baseline" />
         </UI.Button>
 
         <UI.Button
           variant="icon-no-border"
-          className={`${atEnd ? "hide" : "show"}`}
-          onClick={() => scroll("right")}
+          className={`${atEnd ? 'hide' : 'show'}`}
+          onClick={() => scroll('right')}
         >
           <ChevronRight16Filled className="e-9890-icon e-9890-baseline" />
         </UI.Button>

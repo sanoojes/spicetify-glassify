@@ -8,14 +8,16 @@
 :root {
   --fluid-color: rgba(200, 200, 200, 0.3);
 
-  --shadow-glass: inset 1px 1px 4px hsla(0, 0%, 100%, 0.3),
+  --shadow-glass:
+    inset 1px 1px 4px hsla(0, 0%, 100%, 0.3),
     inset -1px -1px 6px hsla(0, 0%, 0%, 0.1), 0 4px 12px hsla(0, 0%, 0%, 0.15),
     0 0 20px hsla(0, 0%, 100%, 0.05);
-  --shadow-glass-no-clr: inset 1px 1px 4px transparent,
-    inset -1px -1px 6px transparent, 0 4px 12px transparent,
-    0 0 20px transparent;
+  --shadow-glass-no-clr:
+    inset 1px 1px 4px transparent, inset -1px -1px 6px transparent, 0 4px 12px transparent, 0 0 20px
+    transparent;
 
-  --shadow-glass-large: inset 2px 2px 6px hsla(0, 0%, 100%, 0.25),
+  --shadow-glass-large:
+    inset 2px 2px 6px hsla(0, 0%, 100%, 0.25),
     inset -2px -2px 8px hsla(0, 0%, 0%, 0.15), 0 8px 24px hsla(0, 0%, 0%, 0.2),
     0 0 40px hsla(0, 0%, 100%, 0.08);
 
@@ -974,7 +976,9 @@ body[data-page-url*="/section/"] {
       z-index: -1;
       -webkit-backdrop-filter: none;
       backdrop-filter: none;
-      transition: backdrop-filter 0.3s linear, opacity 0.3s linear;
+      transition:
+        backdrop-filter 0.3s linear,
+        opacity 0.3s linear;
       box-shadow: var(--shadow-glass);
     }
 
@@ -1182,10 +1186,7 @@ body[data-page-url*="/section/"] {
   border-radius: var(--s-2xl);
 
   .e-9640-progress-bar__indicator {
-    --progress-bar-color: var(
-      --icon-color,
-      var(--clr-on-surface, #fafafa)
-    ) !important;
+    --progress-bar-color: var(--icon-color, var(--clr-on-surface, #fafafa)) !important;
   }
 
   .V795GKOEZNiChr8dJcD4 {
@@ -1320,10 +1321,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   height: fit-content;
   padding: 12px 12px;
   margin: 2px 0;
-  background-color: rgba(
-    var(--clr-secondary-container-rgb),
-    var(--glass-alpha)
-  );
+  background-color: rgba(var(--clr-secondary-container-rgb), var(--glass-alpha));
   border-radius: var(--s-lg);
   min-width: 10rem;
   box-shadow: var(--shadow-glass);
@@ -1427,20 +1425,14 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   background-repeat: no-repeat;
   will-change: transform, filter;
   transition: all 0s linear;
-  mask-image: linear-gradient(
-    rgb(0, 0, 0) calc(var(--umv-height) / 2),
-    rgba(0, 0, 0, 0) 100%
-  );
+  mask-image: linear-gradient(rgb(0, 0, 0) calc(var(--umv-height) / 2), rgba(0, 0, 0, 0) 100%);
   transform-origin: center center;
   &.color {
     background-color: var(--umv-bg-color);
   }
   &.desktop {
     --umv-height: calc(var(--main-view-height, 95vh) * 1.125);
-    mask-image: linear-gradient(
-      rgb(0, 0, 0) calc(var(--umv-height) / 1.125),
-      rgba(0, 0, 0, 0) 100%
-    );
+    mask-image: linear-gradient(rgb(0, 0, 0) calc(var(--umv-height) / 1.125), rgba(0, 0, 0, 0) 100%);
   }
   &.fade-in {
     transition: opacity 0.5s ease-in;

@@ -1,6 +1,6 @@
-import appStore from "@app/store/appStore.ts";
-import getOrCreateStyle from "@app/utils/dom/getOrCreateStyle.ts";
-import { isVersionAtLeast, isWindows } from "@app/utils/platform.ts";
+import appStore from '@app/store/appStore.ts';
+import getOrCreateStyle from '@app/utils/dom/getOrCreateStyle.ts';
+import { isVersionAtLeast, isWindows } from '@app/utils/platform.ts';
 
 function getZoom() {
   const zoom = window.outerHeight / window.innerHeight;
@@ -9,8 +9,8 @@ function getZoom() {
 
 function mountTransparentWindowControls(height: number) {
   const { zoom, inverseZoom } = getZoom();
-  const style = getOrCreateStyle("transparent-controls");
-  const isV46Above = isVersionAtLeast("1.2.46");
+  const style = getOrCreateStyle('transparent-controls');
+  const isV46Above = isVersionAtLeast('1.2.46');
 
   const normalHeight = height || (isV46Above ? 32 : 64);
   if (normalHeight === 0) {
@@ -24,9 +24,7 @@ body::after {content: ""; height: 0; width: 0; position: fixed; top: 0; right: 0
   if (controlWidth > 500) return intervalCall();
 
   const scaledHeight = normalHeight / zoom;
-  const topOffset = isV46Above
-    ? (scaledHeight - Math.min(32 / zoom, scaledHeight)) / 2
-    : 0;
+  const topOffset = isV46Above ? (scaledHeight - Math.min(32 / zoom, scaledHeight)) / 2 : 0;
   const controlHeight = scaledHeight - topOffset * 2;
   if (controlHeight > 500) return intervalCall();
 
@@ -48,25 +46,17 @@ body.hide-transparent-controls:after { display: none; content: none; }`;
 
 async function updateTitlebarHeight(height: number) {
   const msg = { height };
-  await Spicetify?.Platform?.ControlMessageAPI?._updateUiClient?.updateTitlebarHeight(
-    msg
-  );
-  await Spicetify?.Platform?.UpdateAPI?._updateUiClient?.updateTitlebarHeight(
-    msg
-  );
-  await Spicetify.CosmosAsync.post("sp://messages/v1/container/control", {
-    type: "update_titlebar",
+  await Spicetify?.Platform?.ControlMessageAPI?._updateUiClient?.updateTitlebarHeight(msg);
+  await Spicetify?.Platform?.UpdateAPI?._updateUiClient?.updateTitlebarHeight(msg);
+  await Spicetify.CosmosAsync.post('sp://messages/v1/container/control', {
+    type: 'update_titlebar',
     height: `${height}px`,
   });
 }
 
-export default function setControls(
-  height = appStore.getState().windowControlHeight
-) {
+export default function setControls(height = appStore.getState().windowControlHeight) {
   if (!isWindows()) return;
-  updateTitlebarHeight(height).then(() =>
-    mountTransparentWindowControls(height)
-  );
+  updateTitlebarHeight(height).then(() => mountTransparentWindowControls(height));
 }
 
 function intervalCall() {
@@ -74,11 +64,8 @@ function intervalCall() {
   setTimeout(() => clearInterval(intervalId), 10000);
 }
 
-window.addEventListener("resize", intervalCall);
-document.addEventListener("fullscreenchange", () =>
-  document.body.classList.toggle(
-    "hide-transparent-controls",
-    !!document.fullscreenElement
-  )
+window.addEventListener('resize', intervalCall);
+document.addEventListener('fullscreenchange', () =>
+  document.body.classList.toggle('hide-transparent-controls', !!document.fullscreenElement)
 );
 appStore.subscribe((state) => state.windowControlHeight, setControls);

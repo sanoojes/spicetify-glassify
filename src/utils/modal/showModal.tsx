@@ -1,7 +1,7 @@
-import Modal from "@app/components/Modal.tsx";
-import getOrCreateElement from "@app/utils/dom/getOrCreateElement.ts";
-import React, { type ReactNode } from "react";
-import { createRoot } from "react-dom/client";
+import Modal from '@app/components/Modal.tsx';
+import getOrCreateElement from '@app/utils/dom/getOrCreateElement.ts';
+import React, { type ReactNode } from 'react';
+import { createRoot } from 'react-dom/client';
 
 type ModalProps = {
   title: string;
@@ -9,7 +9,7 @@ type ModalProps = {
 };
 
 export function showModal({ title, content }: ModalProps) {
-  const rootElem = getOrCreateElement("div", "modal-root", document.body);
+  const rootElem = getOrCreateElement('div', 'modal-root', document.body);
   const root = createRoot(rootElem);
 
   const handleClose = () => {

@@ -1,5 +1,5 @@
-import type { ReactNode } from "react";
-import type { ZodSafeParseResult } from "zod";
+import type { ReactNode } from 'react';
+import type { ZodSafeParseResult } from 'zod';
 
 export type DropdownOptions = [label: string, value: string];
 export type DropdownProps = {
@@ -17,13 +17,13 @@ export type BaseInputProps = {
 
 export type InputProps =
   | (BaseInputProps & {
-      inputType: "text";
+      inputType: 'text';
       value?: string;
       onChange: (value: string) => void;
       validation?: (value: string) => ZodSafeParseResult<string> | boolean;
     })
   | (BaseInputProps & {
-      inputType: "number";
+      inputType: 'number';
       value?: number;
       onChange: (value: number) => void;
       validation?: (value: number) => ZodSafeParseResult<number> | boolean;
@@ -37,7 +37,7 @@ export type ToggleProps = {
 
 export type ButtonProps = {
   className?: string;
-  variant?: "default" | "primary" | "danger" | "icon" | "icon-no-border";
+  variant?: 'default' | 'primary' | 'danger' | 'icon' | 'icon-no-border';
   onClick: () => void;
   buttonText?: string | ReactNode;
   children?: string | ReactNode;

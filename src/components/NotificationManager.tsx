@@ -1,11 +1,5 @@
-import UI from "@app/components/ui/index.ts";
-import React, {
-  type FC,
-  type ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import UI from '@app/components/ui/index.ts';
+import React, { type FC, type ReactNode, useEffect, useRef, useState } from 'react';
 
 export type Notification = {
   id?: string;
@@ -34,12 +28,7 @@ const NotificationManager: FC = () => {
     }
   };
 
-  const processNotification = ({
-    id,
-    message,
-    isError,
-    timeout,
-  }: Notification) => {
+  const processNotification = ({ id, message, isError, timeout }: Notification) => {
     const notificationId = id ?? generateId();
 
     // Clear existing timeout if notification with same ID already exists
@@ -49,10 +38,7 @@ const NotificationManager: FC = () => {
 
     setNotifications((prev) => {
       const withoutExisting = prev.filter((n) => n.id !== notificationId);
-      return [
-        ...withoutExisting,
-        { id: notificationId, message, isError, timeout },
-      ];
+      return [...withoutExisting, { id: notificationId, message, isError, timeout }];
     });
 
     const timer = setTimeout(() => removeNotification(notificationId), timeout);

@@ -1,10 +1,9 @@
-import type { DropdownProps } from "@app/types/uiSchema.ts";
-import Dropdown from "@app/components/ui/Dropdown.tsx";
-import React, { type FC } from "react";
+import Dropdown from '@app/components/ui/Dropdown.tsx';
+import type { DropdownProps } from '@app/types/uiSchema.ts';
+import React, { type FC } from 'react';
 
 const DropdownAction: FC<DropdownProps> = ({ value, onChange, options }) => {
-  const selectedLabel =
-    options.find(([, val]) => val === value)?.[0] ?? "Select";
+  const selectedLabel = options.find(([, val]) => val === value)?.[0] ?? 'Select';
 
   return (
     <Dropdown>

@@ -1,48 +1,46 @@
-import type { SectionProps } from "@app/types/settingSchema.ts";
-import { AppStateSchema } from "@app/schemas/appStoreSchema.ts";
-import type appStore from "@app/store/appStore.ts";
-import { copyToClipboard } from "@app/utils/dom/copyToClipboard.ts";
-import resetTheme from "@app/utils/resetTheme.ts";
-import { showNotification } from "@app/utils/showNotification.tsx";
-import React from "react";
+import { AppStateSchema } from '@app/schemas/appStoreSchema.ts';
+import type appStore from '@app/store/appStore.ts';
+import type { SectionProps } from '@app/types/settingSchema.ts';
+import { copyToClipboard } from '@app/utils/dom/copyToClipboard.ts';
+import resetTheme from '@app/utils/resetTheme.ts';
+import { showNotification } from '@app/utils/showNotification.tsx';
+import React from 'react';
 
-export const getAdvancedSettings = (
-  state: ReturnType<typeof appStore.getState>
-): SectionProps =>
+export const getAdvancedSettings = (state: ReturnType<typeof appStore.getState>): SectionProps =>
   ({
-    id: "advanced-settings",
-    sectionName: "Advanced",
+    id: 'advanced-settings',
+    sectionName: 'Advanced',
     groups: [
       {
-        id: "advanced-actions",
+        id: 'advanced-actions',
         components: [
           {
-            id: "export-settings",
-            type: "Button",
-            variant: "primary",
-            label: "Export Configuration",
-            tippy: "Copy all settings as JSON.",
-            buttonText: "Copy",
+            id: 'export-settings',
+            type: 'Button',
+            variant: 'primary',
+            label: 'Export Configuration',
+            tippy: 'Copy all settings as JSON.',
+            buttonText: 'Copy',
             onClick: () => {
               const config = state.exportConfig();
               if (!config) {
                 showNotification({
-                  id: "export-error",
-                  message: "Failed to export configuration.",
+                  id: 'export-error',
+                  message: 'Failed to export configuration.',
                   isError: true,
                 });
                 return;
               }
-              copyToClipboard(config, "Settings copied to clipboard!");
+              copyToClipboard(config, 'Settings copied to clipboard!');
             },
           },
           {
-            id: "import-settings",
-            type: "Input",
-            label: "Import Configuration",
-            tippy: "Paste valid JSON to import settings.",
-            inputType: "text",
-            placeholder: "Paste JSON here...",
+            id: 'import-settings',
+            type: 'Input',
+            label: 'Import Configuration',
+            tippy: 'Paste valid JSON to import settings.',
+            inputType: 'text',
+            placeholder: 'Paste JSON here...',
             textArea: true,
             onChange: (value) => {
               try {
@@ -52,19 +50,16 @@ export const getAdvancedSettings = (
                 if (result.success) {
                   state.importConfig(result.data);
                   showNotification({
-                    id: "import-success",
-                    message: "Settings imported successfully!",
+                    id: 'import-success',
+                    message: 'Settings imported successfully!',
                   });
                 } else {
                   const errorMessages = result.error.issues
-                    .map(
-                      (issue) =>
-                        `• ${issue.path.join(".") || "root"}: ${issue.message}`
-                    )
-                    .join("\n");
+                    .map((issue) => `• ${issue.path.join('.') || 'root'}: ${issue.message}`)
+                    .join('\n');
 
                   showNotification({
-                    id: "import-invalid",
+                    id: 'import-invalid',
                     message: (
                       <div>
                         <strong>Invalid configuration:</strong>
@@ -76,29 +71,29 @@ export const getAdvancedSettings = (
                 }
               } catch {
                 showNotification({
-                  id: "import-parse-error",
-                  message: "Error parsing JSON input.",
+                  id: 'import-parse-error',
+                  message: 'Error parsing JSON input.',
                   isError: true,
                 });
               }
             },
           },
           {
-            id: "reset-store",
-            type: "Button",
-            variant: "danger",
-            label: "Reset Theme",
-            tippy: "Restore theme settings to default.",
-            buttonText: "Reset",
+            id: 'reset-store',
+            type: 'Button',
+            variant: 'danger',
+            label: 'Reset Theme',
+            tippy: 'Restore theme settings to default.',
+            buttonText: 'Reset',
             onClick: () => {
               resetTheme();
               showNotification({
-                id: "theme-reset",
-                message: "Theme reset to default.",
+                id: 'theme-reset',
+                message: 'Theme reset to default.',
               });
             },
           },
         ],
       },
     ],
-  } satisfies SectionProps);
+  }) satisfies SectionProps;

@@ -1,13 +1,9 @@
-import {
-  FragmentShader,
-  GetShaderUniforms,
-  VertexShader,
-} from "@app/shader/animatedBg.ts";
-import loadAndProcessImage from "@app/components/background/helper/loadAndProcessImage.ts";
-import appStore from "@app/store/appStore.ts";
-import React, { type FC, useEffect, useRef } from "react";
-import * as THREE from "three";
-import { useStore } from "zustand";
+import loadAndProcessImage from '@app/components/background/helper/loadAndProcessImage.ts';
+import { FragmentShader, GetShaderUniforms, VertexShader } from '@app/shader/animatedBg.ts';
+import appStore from '@app/store/appStore.ts';
+import React, { type FC, useEffect, useRef } from 'react';
+import * as THREE from 'three';
+import { useStore } from 'zustand';
 
 // TODO: Migrate to webworker
 const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
@@ -15,10 +11,7 @@ const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const uniformsRef = useRef<ReturnType<typeof GetShaderUniforms> | null>(null);
   const isFocusedRef = useRef(true);
-  const { filter, autoStopAnimation } = useStore(
-    appStore,
-    (state) => state.bg.options
-  );
+  const { filter, autoStopAnimation } = useStore(appStore, (state) => state.bg.options);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -47,25 +40,20 @@ const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
 
       const scaledWidth = width * window.devicePixelRatio;
       const scaledHeight = height * window.devicePixelRatio;
-      const largestAxis = scaledWidth > scaledHeight ? "X" : "Y";
+      const largestAxis = scaledWidth > scaledHeight ? 'X' : 'Y';
       const largestAxisSize = Math.max(scaledWidth, scaledHeight);
 
-      uniforms.BackgroundCircleOrigin.value.set(
-        scaledWidth / 2,
-        scaledHeight / 2
-      );
+      uniforms.BackgroundCircleOrigin.value.set(scaledWidth / 2, scaledHeight / 2);
       uniforms.BackgroundCircleRadius.value = largestAxisSize * 1.5;
 
       uniforms.CenterCircleOrigin.value.set(scaledWidth / 2, scaledHeight / 2);
-      uniforms.CenterCircleRadius.value =
-        largestAxisSize * (largestAxis === "X" ? 1 : 0.75);
+      uniforms.CenterCircleRadius.value = largestAxisSize * (largestAxis === 'X' ? 1 : 0.75);
 
       uniforms.LeftCircleOrigin.value.set(0, scaledHeight);
       uniforms.LeftCircleRadius.value = largestAxisSize * 0.75;
 
       uniforms.RightCircleOrigin.value.set(scaledWidth, 0);
-      uniforms.RightCircleRadius.value =
-        largestAxisSize * (largestAxis === "X" ? 0.65 : 0.5);
+      uniforms.RightCircleRadius.value = largestAxisSize * (largestAxis === 'X' ? 0.65 : 0.5);
 
       renderer.render(scene, camera); // render once when resizing else the background will be black
     };
@@ -97,14 +85,14 @@ const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
     };
     animate(); // start animation loop
 
-    window.addEventListener("resize", UpdateDimensions);
+    window.addEventListener('resize', UpdateDimensions);
 
     return () => {
       if (frameId) cancelAnimationFrame(frameId);
       renderer.dispose();
       geometry.dispose();
       material.dispose();
-      window.removeEventListener("resize", UpdateDimensions);
+      window.removeEventListener('resize', UpdateDimensions);
     };
   }, []);
 
@@ -117,13 +105,13 @@ const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
       isFocusedRef.current = false;
     };
     if (autoStopAnimation) {
-      window.addEventListener("focus", handleFocus);
-      window.addEventListener("blur", handleBlur);
+      window.addEventListener('focus', handleFocus);
+      window.addEventListener('blur', handleBlur);
     }
 
     return () => {
-      window.removeEventListener("focus", handleFocus);
-      window.removeEventListener("blur", handleBlur);
+      window.removeEventListener('focus', handleFocus);
+      window.removeEventListener('blur', handleBlur);
     };
   }, [autoStopAnimation]);
 
@@ -159,10 +147,7 @@ const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
           if (t < 1) {
             requestAnimationFrame(fade);
           } else {
-            if (
-              prevTexture &&
-              prevTexture !== uniformsRef.current.BlurredCoverArt.value
-            ) {
+            if (prevTexture && prevTexture !== uniformsRef.current.BlurredCoverArt.value) {
               prevTexture.dispose();
             }
           }
@@ -182,9 +167,9 @@ const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
       ref={canvasRef}
       className="animated-bg-canvas"
       style={{
-        width: "100%",
-        height: "100%",
-        position: "absolute",
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
         top: 0,
         left: 0,
         opacity: `${filter.opacity ?? 100}%`,

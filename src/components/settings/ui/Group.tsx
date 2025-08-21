@@ -1,11 +1,11 @@
-import type { GroupProps } from "@app/types/settingSchema.ts";
-import Row from "@app/components/settings/ui/Row.tsx";
-import React, { type FC } from "react";
+import Row from '@app/components/settings/ui/Row.tsx';
+import type { GroupProps } from '@app/types/settingSchema.ts';
+import React, { type FC } from 'react';
 
 const Group: FC<GroupProps> = ({ groupName, components, visible }) => {
   const isVisible = visible ? visible() : true;
   return (
-    <div className={`x-settings-section ${!isVisible ? " hidden" : ""}`}>
+    <div className={`x-settings-section ${!isVisible ? ' hidden' : ''}`}>
       {groupName ? (
         <h3 className="e-9890-text encore-text-body-medium-bold encore-internal-color-text-base">
           {groupName}

@@ -1,19 +1,16 @@
-import type { CSSFilter } from "@app/store/appStore.ts";
-import serializeFilters from "@app/utils/dom/serializeFilters.ts";
-import * as THREE from "three";
+import type { CSSFilter } from '@app/store/appStore.ts';
+import serializeFilters from '@app/utils/dom/serializeFilters.ts';
+import * as THREE from 'three';
 
-async function loadAndProcessImage(
-  url: string,
-  filter: CSSFilter
-): Promise<THREE.Texture | null> {
+async function loadAndProcessImage(url: string, filter: CSSFilter): Promise<THREE.Texture | null> {
   try {
     if (!url) {
-      console.warn("No image URL provided");
+      console.warn('No image URL provided');
       return null;
     }
 
     const image = new Image();
-    image.crossOrigin = url.startsWith("spotify:image:") ? null : "anonymous";
+    image.crossOrigin = url.startsWith('spotify:image:') ? null : 'anonymous';
     image.src = url;
     await image.decode();
 
@@ -23,20 +20,14 @@ async function loadAndProcessImage(
     const expandedSize = originalSize + padding;
 
     const circleCanvas = new OffscreenCanvas(originalSize, originalSize);
-    const ctx = circleCanvas.getContext("2d");
+    const ctx = circleCanvas.getContext('2d');
     if (!ctx) {
-      console.error("Failed to get 2D context for circleCanvas");
+      console.error('Failed to get 2D context for circleCanvas');
       return null;
     }
 
     ctx.beginPath();
-    ctx.arc(
-      originalSize / 2,
-      originalSize / 2,
-      originalSize / 2,
-      0,
-      Math.PI * 2
-    );
+    ctx.arc(originalSize / 2, originalSize / 2, originalSize / 2, 0, Math.PI * 2);
     ctx.closePath();
     ctx.clip();
     ctx.drawImage(
@@ -52,9 +43,9 @@ async function loadAndProcessImage(
     );
 
     const blurredCanvas = new OffscreenCanvas(expandedSize, expandedSize);
-    const blurredCtx = blurredCanvas.getContext("2d");
+    const blurredCtx = blurredCanvas.getContext('2d');
     if (!blurredCtx) {
-      console.error("Failed to get 2D context for blurredCanvas");
+      console.error('Failed to get 2D context for blurredCanvas');
       return null;
     }
 
@@ -65,7 +56,7 @@ async function loadAndProcessImage(
     texture.needsUpdate = true;
     return texture;
   } catch (err) {
-    console.error("Failed to load/process image:", err);
+    console.error('Failed to load/process image:', err);
     return null;
   }
 }

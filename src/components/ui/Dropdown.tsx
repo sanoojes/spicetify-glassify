@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/a11y: no a11y for now  */
-import { ChevronDown16Filled } from "@fluentui/react-icons";
+import { ChevronDown16Filled } from '@fluentui/react-icons';
 import React, {
   type ButtonHTMLAttributes,
   createContext,
@@ -12,8 +12,8 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from "react";
-import { createPortal } from "react-dom";
+} from 'react';
+import { createPortal } from 'react-dom';
 
 // Context
 type DropdownContextType = {
@@ -59,16 +59,9 @@ function DropdownButton({ children }: DropdownButtonProps) {
   const toggleOpen = () => setOpen(!open);
 
   return (
-    <button
-      ref={buttonRef}
-      onClick={toggleOpen}
-      className="dropdown-button"
-      type="button"
-    >
+    <button ref={buttonRef} onClick={toggleOpen} className="dropdown-button" type="button">
       {children}
-      <ChevronDown16Filled
-        className={`dropdown-icon ${open ? "rotate" : ""}`}
-      />
+      <ChevronDown16Filled className={`dropdown-icon ${open ? 'rotate' : ''}`} />
     </button>
   );
 }
@@ -98,10 +91,7 @@ function DropdownContent({ children }: DropdownContentProps) {
       let left = buttonCenterX - contentWidth / 2;
       let top = buttonRect.bottom + window.scrollY;
 
-      left = Math.max(
-        8,
-        Math.min(left + window.scrollX, viewportWidth - contentWidth - 8)
-      );
+      left = Math.max(8, Math.min(left + window.scrollX, viewportWidth - contentWidth - 8));
 
       const contentHeight = content.offsetHeight;
       const spaceBelow = viewportHeight - buttonRect.bottom;
@@ -123,7 +113,7 @@ function DropdownContent({ children }: DropdownContentProps) {
   };
 
   useEffect(() => {
-    document.body.classList.toggle("dropdown-open", open);
+    document.body.classList.toggle('dropdown-open', open);
   }, [open]);
 
   useEffect(() => {
@@ -132,10 +122,10 @@ function DropdownContent({ children }: DropdownContentProps) {
       setShow(false);
       updatePosition();
 
-      window.addEventListener("resize", updatePosition);
+      window.addEventListener('resize', updatePosition);
 
       return () => {
-        window.removeEventListener("resize", updatePosition);
+        window.removeEventListener('resize', updatePosition);
       };
     }
   }, [open]);
@@ -143,13 +133,10 @@ function DropdownContent({ children }: DropdownContentProps) {
   if (!open) return null;
 
   return createPortal(
-    <div
-      className="GenericModal__overlay dropdown-overlay"
-      onClick={() => setOpen(false)}
-    >
+    <div className="GenericModal__overlay dropdown-overlay" onClick={() => setOpen(false)}>
       <div
         ref={contentRef}
-        className={`dropdown-content ${ready && show ? "visible" : ""}`}
+        className={`dropdown-content ${ready && show ? 'visible' : ''}`}
         style={{
           top: coords.top,
           left: coords.left,

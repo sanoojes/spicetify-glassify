@@ -1,15 +1,9 @@
-import type { InputProps } from "@app/types/uiSchema.ts";
-import React, {
-  type ChangeEvent,
-  type FC,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import type { InputProps } from '@app/types/uiSchema.ts';
+import React, { type ChangeEvent, type FC, useCallback, useEffect, useState } from 'react';
 
-const TextArea: FC<Extract<InputProps, { inputType: "text" }>> = ({
+const TextArea: FC<Extract<InputProps, { inputType: 'text' }>> = ({
   placeholder,
-  value: defaultValue = "",
+  value: defaultValue = '',
   onChange,
   validation,
 }) => {
@@ -31,8 +25,7 @@ const TextArea: FC<Extract<InputProps, { inputType: "text" }>> = ({
       //   });
       // }
 
-      const success =
-        typeof result === "boolean" ? result : result?.success ?? true;
+      const success = typeof result === 'boolean' ? result : (result?.success ?? true);
       setIsValid(success);
       return success;
     },
@@ -50,7 +43,7 @@ const TextArea: FC<Extract<InputProps, { inputType: "text" }>> = ({
   return (
     <div className="glassify-input-wrapper textarea">
       <textarea
-        className={`glassify-input textarea${!isValid ? " error" : ""}`}
+        className={`glassify-input textarea${!isValid ? ' error' : ''}`}
         placeholder={placeholder}
         value={value}
         onChange={handleChange}

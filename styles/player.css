@@ -86,14 +86,12 @@
       inset: 0;
       border-radius: inherit;
       z-index: -1;
-      -webkit-backdrop-filter: blur(var(--player-blur, 1rem))
-        saturate(var(--player-saturate, 1.5))
-        brightness(var(--player-brightness, 60%))
-        contrast(var(--player-contrast)) opacity(var(--player-opacity, 1));
-      backdrop-filter: blur(var(--player-blur, 1rem))
-        saturate(var(--player-saturate, 1.5))
-        brightness(var(--player-brightness, 60%))
-        contrast(var(--player-contrast)) opacity(var(--player-opacity, 1));
+      -webkit-backdrop-filter: blur(var(--player-blur, 1rem)) saturate(var(--player-saturate, 1.5))
+        brightness(var(--player-brightness, 60%)) contrast(var(--player-contrast))
+        opacity(var(--player-opacity, 1));
+      backdrop-filter: blur(var(--player-blur, 1rem)) saturate(var(--player-saturate, 1.5))
+        brightness(var(--player-brightness, 60%)) contrast(var(--player-contrast))
+        opacity(var(--player-opacity, 1));
     }
   }
 }
@@ -184,9 +182,10 @@
     gap: 4px;
     padding: 0.5rem 0.5rem;
     border-radius: 0.75rem;
-    transition: width 225ms ease-in-out, background-color 300ms linear;
-    border: var(--border-thickness, 1px) var(--border-style, solid)
-      rgba(0, 0, 0, 0);
+    transition:
+      width 225ms ease-in-out,
+      background-color 300ms linear;
+    border: var(--border-thickness, 1px) var(--border-style, solid) rgba(0, 0, 0, 0);
     transform: translate3d(0px, -50%, 0px);
 
     &:hover {
@@ -272,12 +271,10 @@ div.cover-art-icon {
     border-radius: inherit;
     z-index: -1;
     box-shadow: var(--shadow-glass);
-    -webkit-backdrop-filter: blur(var(--player-blur, 1rem))
-      saturate(var(--player-saturate, 1.5))
+    -webkit-backdrop-filter: blur(var(--player-blur, 1rem)) saturate(var(--player-saturate, 1.5))
       brightness(var(--player-brightness, 60%)) contrast(var(--player-contrast))
       opacity(var(--player-opacity, 1));
-    backdrop-filter: blur(var(--player-blur, 1rem))
-      saturate(var(--player-saturate, 1.5))
+    backdrop-filter: blur(var(--player-blur, 1rem)) saturate(var(--player-saturate, 1.5))
       brightness(var(--player-brightness, 60%)) contrast(var(--player-contrast))
       opacity(var(--player-opacity, 1));
   }
@@ -329,11 +326,7 @@ div.cover-art-icon {
 
 .main-entityHeader-container.main-entityHeader-withBackgroundImage {
   height: var(--main-view-height);
-  background-image: linear-gradient(
-    to bottom,
-    transparent 75%,
-    rgba(var(--clr-surface-rgb), 0.25)
-  );
+  background-image: linear-gradient(to bottom, transparent 75%, rgba(var(--clr-surface-rgb), 0.25));
 }
 .player-floating {
   .main-entityHeader-container.main-entityHeader-withBackgroundImage {
@@ -342,9 +335,7 @@ div.cover-art-icon {
 }
 .global-nav-floating {
   .main-entityHeader-container.main-entityHeader-withBackgroundImage {
-    height: calc(
-      var(--main-view-height) + var(--global-nav-height) - var(--panel-gap)
-    );
+    height: calc(var(--main-view-height) + var(--global-nav-height) - var(--panel-gap));
   }
 }
 
@@ -385,9 +376,7 @@ div.cover-art-icon {
   }
 
   .main-view-container__scroll-node-child {
-    padding-bottom: calc(
-      var(--player-height, 5rem) - var(--panel-gap)
-    ) !important;
+    padding-bottom: calc(var(--player-height, 5rem) - var(--panel-gap)) !important;
   }
 }
 
