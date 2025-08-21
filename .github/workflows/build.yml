@@ -1,0 +1,127 @@
+name: Deploy Jekyll + Deno Builder
+
+on:
+  push:
+    branches: ["docs"]
+  workflow_dispatch:
+
+permissions:
+  contents: write # needed for tagging + releases
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # --- Check & Build job ---
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.vars.outputs.version }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2.0.3
+
+      - name: Cache Deno deps
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.deno
+            ~/.cache/deno
+          key: ${{ runner.os }}-deno-${{ hashFiles('deno.lock') }}
+          restore-keys: ${{ runner.os }}-deno-
+
+      # ✅ Run biome check (warn only)
+      - name: Run Biome check
+        run: |
+          deno task check || echo "Biome check failed – continuing"
+
+      # ✅ Run Deno build
+      - name: Build with Deno
+        run: deno task build
+
+      # ✅ Build Jekyll site
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      # ✅ Generate version tag once
+      - name: Generate version tag
+        id: vars
+        run: |
+          VERSION="v$(date +'%Y.%m.%d.%H%M')"   # or jq -r .version deno.json
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      # ✅ Copy dist into _site/releases/<version>
+      - name: Copy dist into site
+        run: |
+          mkdir -p ./_site/releases/${{ steps.vars.outputs.version }}
+          cp -r dist/* ./_site/releases/${{ steps.vars.outputs.version }}/
+
+          # Update "latest"
+          rm -rf ./_site/releases/latest
+          mkdir -p ./_site/releases/latest
+          cp -r dist/* ./_site/releases/latest/
+
+      # ✅ Upload artifact for GitHub Pages
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+
+      # ✅ Save dist as artifact (for GitHub Release)
+      - name: Save dist as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/**
+
+  # --- Deploy job (GitHub Pages) ---
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  # --- Release + Tagging job ---
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      # ✅ Use version from build
+      - name: Create Git Tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag ${{ needs.build.outputs.version }}
+          git push origin ${{ needs.build.outputs.version }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.build.outputs.version }}
+          name: Release ${{ needs.build.outputs.version }}
+          body: "Automated release from CI/CD"
+          files: dist/**
