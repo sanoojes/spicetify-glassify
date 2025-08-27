@@ -782,6 +782,7 @@ body[data-page-url*="/discography"] {
   }
 }
 /* ========== Carrousel Shadow ========== */
+.search-searchCategory-contentArea,
 .a2NTH51fJWzWsds0OYv_ {
   -webkit-mask-image: var(--mask-gradient);
   mask-image: var(--mask-gradient);
