@@ -10,7 +10,7 @@ async function loadAndProcessImage(url: string, filter: CSSFilter): Promise<THRE
     }
 
     const image = new Image();
-    image.crossOrigin = url.startsWith('spotify:image:') ? null : 'anonymous';
+    image.crossOrigin = url.startsWith('spotify:') ? null : 'anonymous';
     image.src = url;
     await image.decode();
 
