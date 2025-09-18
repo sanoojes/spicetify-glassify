@@ -198,8 +198,6 @@
     border-radius: var(--s-2xl);
     box-shadow: var(--shadow-glass);
   }
-  .main-yourLibraryX-collapseButton {
-  }
 }
 .main-home-filterChipsContainer {
   padding: 0 var(--s-xl);
@@ -929,8 +927,6 @@ body[data-page-url*="/section/"] {
     display: none;
     background: none !important;
   }
-  .main-nowPlayingView-coverArtContainer:has(.canvasVideoContainerNPV) {
-  }
 
   #VideoPlayerNpv_ReactPortal {
     margin: 0 !important;
@@ -1150,8 +1146,6 @@ body[data-page-url*="/section/"] {
     rgb(0, 0, 0) 80%,
     rgba(0, 0, 0, 0) 100%
   );
-}
-.ZPBvrYZDkJvwrRfK_r5i {
 }
 .OTBExwAsDgh_OEe7EAlu.mYWHdrNeGjAdTOD28xSj:before {
   content: none;

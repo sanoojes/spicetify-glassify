@@ -83,6 +83,7 @@ export type AppState = {
   player: PlayerState;
   umv: UnderMainViewState;
   windowControlHeight: number;
+  isAnalyticsActive: boolean;
 };
 
 const PLAYER_BG_FILTER = {
@@ -164,6 +165,7 @@ export const DEFAULT_STATE: AppState = {
     },
   },
   windowControlHeight: 88,
+  isAnalyticsActive: true,
 };
 
 type AppStateSetters = {
@@ -183,6 +185,8 @@ type AppStateSetters = {
   setUMVFilter: (filter: Partial<UnderMainViewState['filter']>) => void;
 
   setWindowControlHeight: (windowControlHeight: number) => void;
+
+  setIsAnalyticsActive: (isAnalyticsActive: boolean) => void;
 
   exportConfig: () => string | null;
   importConfig: (config: AppState) => void;
@@ -254,6 +258,7 @@ const appStore = createStore<AppState & AppStateSetters>()(
             },
           });
         },
+        setIsAnalyticsActive: (isAnalyticsActive) => set({ isAnalyticsActive }),
 
         importConfig: (config) => set(() => merge({}, DEFAULT_STATE, config)),
         exportConfig: () => {

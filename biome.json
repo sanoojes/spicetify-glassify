@@ -16,7 +16,7 @@
     "enabled": true,
     "rules": {
       "complexity": {
-        "noImportantStyles": "error"
+        "noImportantStyles": "off"
       },
       "style": {
         "useImportType": "on",

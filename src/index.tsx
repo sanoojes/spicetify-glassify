@@ -9,6 +9,7 @@ import initNotificationSystem from '@app/utils/initNotificationSystem.tsx';
 import patchIcons from '@app/utils/patchIcons.ts';
 import { isWindows } from '@app/utils/platform.ts';
 import addSettings from '@app/utils/settings/addSettings.tsx';
+import { setupAnalytics } from './setupAnalytics.ts';
 
 const main = async () => {
   await waitForGlobal(() => Spicetify?.Platform && Spicetify?.React && Spicetify?.ReactDOM);
@@ -28,5 +29,7 @@ const main = async () => {
   setPlayer();
 
   addSettings();
+
+  setupAnalytics();
 };
 main();
