@@ -186,6 +186,7 @@
     z-index: -1;
     background: none !important;
   }
+  .bextOq_5YFeq7Im9BlTE,
   .RHRitk6QC3rvuG24RAdj {
     .main-yourLibraryX-filterArea,
     .main-yourLibraryX-header {
@@ -428,6 +429,10 @@ body[data-page-url*="/discography"] {
 }
 .main-nowPlayingView-sectionHeader {
   margin-bottom: var(--s-base);
+}
+.tB3JVNYttFlVC_oYVfjI {
+  margin: 0;
+  padding: 12px 12px;
 }
 
 .Root__globalNav {
@@ -836,9 +841,10 @@ body[data-page-url*="/discography"] {
     box-shadow: var(--shadow-glass);
   }
 }
+.DFuKwT5bvhKZoYr2gfZe,
 .main-entityHeader-container.main-entityHeader-withBackgroundImage,
 .main-entityHeader-withBackgroundImage {
-  height: calc(100vh - 11rem) !important;
+  height: calc(100vh - 10.5rem) !important;
 }
 .main-entityHeader-container {
   position: relative;
