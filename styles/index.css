@@ -1211,6 +1211,8 @@ body[data-page-url*="/section/"] {
 .main-trackCreditsModal-container,
 .main-playlistEditDetailsModal-container,
 .t1hN4Ju87afc5N5fDTnm /* clear cache modal */,
+dialog,
+.jMkF9P0MOVAsPeHbK88D,
 .NiqTdDnFi5KAXoGukrdo /* artist modal dialog */,
 .main-embedWidgetGenerator-container {
   background-color: var(--glass-bg);

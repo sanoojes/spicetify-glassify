@@ -243,6 +243,7 @@ main,
 main.T0fKO6B7LQSCE_VaSM1P > section {
   background-color: var(--background-base);
 } */
+.playlist-playlist-actionBarBackground-background,
 .main-actionBarBackground-background {
   display: none;
 }
