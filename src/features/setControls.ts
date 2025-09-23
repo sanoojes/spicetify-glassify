@@ -10,7 +10,7 @@ function getZoom() {
 function mountTransparentWindowControls(height: number) {
   const { zoom, inverseZoom } = getZoom();
   const style = getOrCreateStyle('transparent-controls');
-  const isV46Above = isVersionAtLeast('1.2.46');
+  const isV46Above = isVersionAtLeast('1.2.46') && !isVersionAtLeast('1.2.70');
 
   const normalHeight = height || (isV46Above ? 32 : 64);
   if (normalHeight === 0) {
