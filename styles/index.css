@@ -113,6 +113,74 @@
     background-color: var(--glass-muted-bg);
   }
 }
+.x-filterBox-expandedOrHasFilter .x-filterBox-filterInput,
+.search-container input.search,
+.x-filterBox-filterInput {
+  background-color: var(--glass-bg) !important;
+  box-shadow: var(--shadow-glass) !important;
+  border-radius: var(--s-lg) !important;
+  border: none !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: var(--glass-hover-bg) !important;
+  }
+}
+.XvgFwKtvocRdadc47KE9 {
+  box-shadow: var(--shadow-glass-no-clr);
+  &:hover {
+    box-shadow: var(--shadow-glass);
+  }
+}
+
+.DquSH3YjnaIIXMZiOvwA {
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(32px) saturate(1.5);
+  box-shadow: var(--shadow-glass);
+  border-radius: var(--s-4xl);
+}
+
+.switch {
+  box-shadow: var(--shadow-glass) !important;
+  border-radius: var(--s-lg) !important;
+  border: none !important;
+  background-color: rgb(29, 185, 84, 0.3) !important;
+
+  &:hover {
+    background-color: rgb(29, 185, 84, 0.5) !important;
+  }
+
+  &.disabled {
+    background-color: var(--glass-bg) !important;
+
+    &:hover,
+    &:active {
+      background-color: var(--glass-hover-bg) !important;
+    }
+  }
+}
+
+.main-trackCreditsModal-mainSection {
+  scrollbar-width: thin;
+}
+
+.spicetify-exp-features {
+  .setting-row {
+    box-shadow: var(--shadow-glass) !important;
+    border-radius: var(--s-lg) !important;
+    border: none !important;
+    padding: 16px 24px !important;
+    margin: 8px 0;
+
+    background-color: var(--glass-bg) !important;
+
+    &:hover {
+      background-color: var(--glass-hover-bg) !important;
+    }
+  }
+}
+
 .main-coverSlotCollapsed-expandButton,
 .main-topBar-buddyFeed button,
 .main-globalNav-historyButtons button,
