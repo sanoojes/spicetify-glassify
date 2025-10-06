@@ -229,6 +229,7 @@ body,
 main,
 .Root__top-container,
 .Root__globalNav,
+#Desktop_LeftSidebar_Id,
 .CvxzmyND_aGd2RR8ZoSr /* Right Sidebar - About Artist section */,
 .k90FaSa2GhsINq5izwhz,
 .N_8iI7NKHP0iG2jp3g0R /* Genre */,
@@ -237,7 +238,7 @@ main,
 .main-yourLibraryX-entryPoints,
 .main-yourLibraryX-libraryContainer,
 .playlist-playlist-playlistContent {
-  background: transparent;
+  background: transparent !important;
 }
 /* 
 main.T0fKO6B7LQSCE_VaSM1P > section {

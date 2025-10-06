@@ -9,7 +9,10 @@ async function addPageData(history?: Spicetify.PlatformHistory['location']) {
   if (!history) history = await waitForGlobal(() => Spicetify?.Platform?.History?.location);
 
   if (history.pathname === '/search') {
-    const intervalId = setInterval(() => updateCardBgAlpha('.Vn9yz8P5MjIvDT8c0U6w', 0.1), 300);
+    const intervalId = setInterval(
+      () => updateCardBgAlpha('.HR4FaJd7xDymgB64NpRG,.Vn9yz8P5MjIvDT8c0U6w', 0.1),
+      300
+    );
     setTimeout(() => clearInterval(intervalId), 6000);
   }
 
@@ -26,7 +29,9 @@ const observeForPlaylistModal = () => {
   waitForElements('.Root').then((rootElem) => {
     const rootObserver = new MutationObserver(
       debounce(() => {
-        const sourceDiv = rootElem.querySelector('.FP_XXx0FMQPJEu3WzfpM') as HTMLDivElement | null;
+        const sourceDiv = rootElem.querySelector(
+          '.xGrVCnYsA9aDj2f8VAj_,.FP_XXx0FMQPJEu3WzfpM'
+        ) as HTMLDivElement | null;
         if (!sourceDiv) return;
 
         const styleObserver = new MutationObserver(() => {
