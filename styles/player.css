@@ -215,8 +215,21 @@
   position: fixed !important;
   top: var(--x-offset);
   right: var(--y-offset);
-  padding-inline: 8px;
+  padding-inline: var(--s-lg) var(--s-xl);
   box-shadow: var(--shadow-glass);
+  border-radius: var(--s-lg);
+  background-color: rgba(var(--clr-on-primary-rgb), 0.6) !important;
+  transition: background-color 0.3s ease-in-out;
+  backdrop-filter: blur(16px);
+
+  * {
+    fill: currentColor;
+    color: var(--clr-on-surface);
+  }
+
+  &:hover {
+    background-color: rgba(var(--clr-on-primary-rgb), 1) !important;
+  }
 }
 
 .next-playing-on-right .main-connectBar-connectBar {
