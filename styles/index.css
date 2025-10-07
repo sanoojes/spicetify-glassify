@@ -1920,6 +1920,11 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   color: var(--clr-on-error-container);
 }
 
+/* track bg image */
+.T7WHRub8pynnWPXERh8e {
+  opacity: 0.5;
+}
+
 @keyframes gradientShift {
   0%,
   100% {
