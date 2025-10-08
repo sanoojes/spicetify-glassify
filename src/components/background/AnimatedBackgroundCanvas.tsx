@@ -7,7 +7,7 @@ import * as THREE from 'three';
 import { useStore } from 'zustand';
 
 // TODO: Migrate to webworker
-const AnimatedBackgroundCanvas: FC<{ imageSrc?: string }> = ({ imageSrc }) => {
+const AnimatedBackgroundCanvas: FC<{ imageSrc: string | null }> = ({ imageSrc }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const rendererRef = useRef<THREE.WebGLRenderer | null>(null);
   const uniformsRef = useRef<ReturnType<typeof GetShaderUniforms> | null>(null);

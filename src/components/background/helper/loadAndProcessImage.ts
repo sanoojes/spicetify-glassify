@@ -2,7 +2,10 @@ import type { CSSFilter } from '@app/store/appStore.ts';
 import serializeFilters from '@app/utils/dom/serializeFilters.ts';
 import * as THREE from 'three';
 
-async function loadAndProcessImage(url: string, filter: CSSFilter): Promise<THREE.Texture | null> {
+async function loadAndProcessImage(
+  url: string | null,
+  filter: CSSFilter
+): Promise<THREE.Texture | null> {
   try {
     if (!url) {
       console.warn('No image URL provided');
