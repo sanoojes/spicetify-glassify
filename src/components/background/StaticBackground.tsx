@@ -1,9 +1,9 @@
 import appStore from '@app/store/appStore.ts';
 import serializeFilters from '@app/utils/dom/serializeFilters.ts';
+import React, { type FC } from 'react';
 import { useStore } from 'zustand';
-import React from 'react';
 
-const StaticBackground: React.FC<{ imageSrc: string | null }> = ({ imageSrc }) => {
+const StaticBackground: FC<{ imageSrc: string | null }> = ({ imageSrc }) => {
   const filter = useStore(appStore, (state) => state.bg.options.filter);
 
   return (
