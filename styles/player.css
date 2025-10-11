@@ -181,19 +181,21 @@
     overflow: hidden;
     gap: 4px;
     padding: 0.5rem 0.5rem;
-    border-radius: 0.75rem;
+    border-radius: var(--player-border-radius);
     transition:
       width 225ms ease-in-out,
       background-color 300ms linear;
-    border: var(--border-thickness, 1px) var(--border-style, solid) rgba(0, 0, 0, 0);
+    box-shadow: var(--shadow-glass-no-clr);
     transform: translate3d(0px, -50%, 0px);
+    backdrop-filter: blur(0px);
 
     &:hover {
       width: fit-content;
       min-width: fit-content;
       max-width: 50cqw;
-      background-color: var(--clr-surface);
-      border: var(--hover-border);
+      background-color: var(--glass-bg);
+      box-shadow: var(--shadow-glass);
+      backdrop-filter: blur(16px);
     }
 
     .volume-bar {
