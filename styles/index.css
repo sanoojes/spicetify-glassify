@@ -1490,12 +1490,26 @@ dialog,
 .HwAlGCDD0hvEKSl4MqyQ /* create btn modal */,
 .jHt3xA6ovwVKkMJKqOhO {
   background-color: var(--glass-bg);
-  backdrop-filter: blur(32px) saturate(1.5);
   box-shadow: var(--shadow-glass);
   border-radius: var(--s-4xl);
+  position: relative;
+
+  &::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    position: absolute;
+    z-index: -1;
+    backdrop-filter: blur(32px) saturate(1.5);
+  }
+}
+.jHt3xA6ovwVKkMJKqOhO {
+  overflow: visible !important;
 }
 
 .HwAlGCDD0hvEKSl4MqyQ /* create btn modal */ {
+  overflow: hidden !important;
   button {
     border-radius: var(--s-3xl) !important;
     box-shadow: var(--shadow-glass-no-clr);
