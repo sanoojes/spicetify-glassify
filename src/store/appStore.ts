@@ -189,7 +189,7 @@ type AppStateSetters = {
   setIsAnalyticsActive: (isAnalyticsActive: boolean) => void;
 
   exportConfig: () => string | null;
-  importConfig: (config: AppState) => void;
+  importConfig: (config: Partial<AppState>) => void;
   resetStore: () => void;
 };
 

@@ -30,6 +30,6 @@ const main = async () => {
 
   addSettings();
 
-  setupAnalytics();
+  // setupAnalytics();
 };
 main();
