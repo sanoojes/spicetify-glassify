@@ -101,7 +101,7 @@
 }
 
 .main-entityHeader-image,
-.main-image-image {
+.x-entityImage-xsmall{
   border-radius: var(--s-lg);
 }
 
@@ -327,6 +327,7 @@
   margin: 0;
   box-shadow: var(--shadow-glass);
   background-color: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(1.5);
 
   &:hover {
     background-color: var(--glass-hover-bg);
@@ -531,7 +532,6 @@ body[data-page-url*="/discography"] {
       box-shadow: var(--shadow-glass-no-clr);
       min-block-size: 62px;
       max-height: 62px;
-      margin: var(--s-sm);
 
       &:hover {
         box-shadow: var(--shadow-glass);
@@ -1927,10 +1927,49 @@ input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
   border-radius: var(--s-xl);
   overflow: hidden;
 }
+
 .notistack-MuiContent-error {
   box-shadow: var(--shadow-glass);
   background-color: rgba(var(--clr-error-container-rgb), 0.6);
   color: var(--clr-on-error-container);
+}
+
+.PromotionDefaultNativeImage-module_image-container__gQhJp,
+img.main-image-image.Z3N2sU3PRuY4NgvdEz55.DlkUu3oBOxXLc2LtOd3N.main-image-loaded,
+.main-cardImage-imageWrapper {
+  border-radius: 20px;
+}
+
+.PcZ4Ih4RnDcfih7nQsvV {
+  border-radius: 12px;
+}
+
+.Z3N2sU3PRuY4NgvdEz55 {
+  border-radius: 20px !important;
+}
+
+.x-searchHistoryEntries-searchHistoryEntry:hover:after {
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: var(--shadow-glass);
+}
+
+.Button-buttonSecondary-small-useBrowserDefaultFocusStyle:hover {
+  border: none;
+}
+
+.GenericModal {
+  background-color: transparent;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.PromotionDefaultNativeImage-module_image-container__gQhJp {
+  border-radius: 20px;
+}
+
+.u5Y6MUcvE4ozYCkA3jkY>* {
+  top: 0;
 }
 
 /* track bg image */
