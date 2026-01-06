@@ -524,7 +524,7 @@ body[data-page-url*="/discography"] {
 
 #Desktop_LeftSidebar_Id,
 .Root__nav-bar {
-  overflow: hidden;
+  overflow: visible;
 
   .main-yourLibraryX-libraryRootlist {
     padding-bottom: 4rem;
@@ -550,6 +550,7 @@ body[data-page-url*="/discography"] {
 }
 .Box-group-tinted-listRow-isInteractive-hasLeadingOrMedia-minBlockSize_56px-padding_8px {
   box-shadow: var(--shadow-glass);
+  border-radius: 20px;
 }
 
 .Button-buttonSecondary-small-useBrowserDefaultFocusStyle,
@@ -1972,6 +1973,204 @@ img.main-image-image.Z3N2sU3PRuY4NgvdEz55.DlkUu3oBOxXLc2LtOd3N.main-image-loaded
 
 .u5Y6MUcvE4ozYCkA3jkY>* {
   top: 0;
+}
+
+.PromotionDefaultNative-module_card-container__Y90Vl {
+  border-radius: 20px;
+}
+
+.PromotionDefaultNative-module_card-container__Y90Vl:focus, 
+.PromotionDefaultNative-module_card-container__Y90Vl:hover {
+  box-shadow: var(--shadow-glass);
+}
+
+.TooltipWrapper-tooltip-tooltip-isVisible {
+  background: transparent;
+  border-radius: 12px;
+  box-shadow: var(--shadow-glass);
+  backdrop-filter: blur(2rem);
+}
+
+.bVJH37qfz55VdpglJjHJ {
+  border-radius: 24px;
+}
+
+.L7Q0vlYYEzm_VlplzWgI:hover>:first-child {
+  border-radius: 20px;
+  box-shadow: var(--shadow-glass);
+}
+
+.main-trackList-rowImage {
+  border-radius: 10px;
+}
+
+/*Hidden Right Sidebar*/
+
+.bVJH37qfz55VdpglJjHJ {
+  background-color: transparent;
+}
+
+.NdlHvD4nJ60_AhmI2cQK {
+  transform: translateX(6px);
+}
+
+.Nn5XB58EgONWij7zBn_a {
+  opacity: 0;
+}
+
+.pP41asBpzic1bRlrsDcs {
+  transform: translateX(calc(100% - 44px));
+}
+
+.uYfQVmF6J8ESfrb6dG6D {
+  background-color: transparent;
+}
+
+/*Fixed Marketplace Style*/
+
+.marketplace-header {
+  background-color: transparent;
+}
+
+.Dropdown-control {
+  background-color: transparent;
+  border-radius: 15px;
+  backdrop-filter: blur(2rem);
+  box-shadow: var(--shadow-glass);
+  color: white;
+}
+
+.Dropdown-control:hover {
+  background-color: #ffffff0a;
+}
+
+.marketplace-tabBar-active {
+  background-color: transparent;
+  border-radius: 15px;
+  backdrop-filter: blur(2rem);
+  box-shadow: var(--shadow-glass);
+}
+
+.marketplace-tabBar-headerItemLink {
+  border-radius: 15px;
+}
+
+.searchbar-bar {
+  background-color: transparent;
+  border-radius: 15px;
+  backdrop-filter: blur(2rem);
+  box-shadow: var(--shadow-glass);
+  border: none;
+  -webkit-text-fill-color: white !important;
+}
+
+.marketplace-header-icon-button {
+  background-color: transparent;
+  border-radius: 15px;
+  backdrop-filter: blur(2rem);
+  box-shadow: var(--shadow-glass);
+}
+
+.marketplace-header-icon-button:hover {
+  background-color: #ffffff0a;
+}
+
+.Dropdown-menu {
+  background-color: transparent;
+  border-radius: 20px;
+  backdrop-filter: blur(2rem);
+  box-shadow: var(--shadow-glass);
+}
+
+.Dropdown-option:hover {
+  background-color: transparent;
+  color: white;
+  box-shadow: var(--shadow-glass);
+}
+
+.Dropdown-option.is-selected {
+  background-color: #ffffff0f;
+  color: white;
+  box-shadow: var(--shadow-glass);
+}
+
+.main-cardImage-image, 
+.main-card-imagePlaceholder {
+  border-radius: 20px;
+}
+
+.marketplace-header {
+  top: 77px;
+}
+
+.L7sNjiJDD8O4xxgMC_Uw,
+.CmdG6rptgpq5PPNEDbu5 {
+  background-color: transparent;
+  backdrop-filter: blur(2rem);
+  box-shadow: var(--shadow-glass);
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.xdRaG3oEtafWF12ivSsO .GbJe7bKdtBTWqSA1h6lE.jH9mCbzpf3DVNTO8oC_9,
+.HdJlXtkXqNGKYjvALpRe .iq1YiNDySAhBvc2IV5wX {
+  border-radius: 20px;
+}
+
+.q5yNYsAl_GMkOgQnquWI {
+  background-color: transparent;
+  box-shadow: var(--shadow-glass);
+  border-radius: 15px;
+}
+
+.main-playButton-PlayButton button>span {
+  box-shadow: none;
+}
+
+.HqnBIbdgZkWQHFxrJC6y.wh4AxQ0GsD3717YB87UI {
+  border-radius: 12px;
+}
+
+.x-explicit-label {
+  border-radius: 6px;
+}
+
+.x-explicit-icon {
+  color: black;;
+}
+
+.SgZMfBWLnJtiwqMVOdQv {
+  background-color: transparent;
+  box-shadow: var(--shadow-glass);
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+.WFxcl5XsCMTPJoajyLlS:hover:after {
+  background-color: transparent;
+  box-shadow: var(--shadow-glass);
+  border-radius: 17px;
+}
+
+.Q4e5h5G6qGXM2uKkgUyo:hover, 
+.Q4e5h5G6qGXM2uKkgUyo:hover:after {
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: var(--shadow-glass);
+}
+
+.cS7XRcN2bhTJvFtfeEvf .E57rhBcLFPYUyUnYLxdD {
+  border-radius: 12px;
+}
+
+.iyhPyoc2dxd1Eno74TCO {
+  background-color: transparent;
+}
+
+.e_N7UqrrJQ0fAw9IkNAL {
+  background: transparent;
+  backdrop-filter: blur(2rem);
 }
 
 /* track bg image */
