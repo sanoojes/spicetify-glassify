@@ -163,10 +163,6 @@
   }
 }
 
-.main-trackCreditsModal-mainSection {
-  scrollbar-width: thin;
-}
-
 .spicetify-exp-features {
   .setting-row {
     box-shadow: var(--shadow-glass) !important;
@@ -1545,6 +1541,8 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
 
 .main-trackCreditsModal-mainSection {
   padding: 8px 12px 0 16px;
+  scrollbar-width: thin;
+  will-change: box-shadow, backdrop-filter;
 }
 
 .main-trackCreditsModal-originalCredits {
