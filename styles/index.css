@@ -613,6 +613,7 @@ body[data-page-url*="/discography"] {
   .Z3N2sU3PRuY4NgvdEz55,
   .main-cardImage-imageWrapper {
     border-radius: var(--s-2xl);
+    overflow: hidden;
   }
 
   .PcZ4Ih4RnDcfih7nQsvV {
