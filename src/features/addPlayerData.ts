@@ -1,5 +1,5 @@
-import tempStore, { type PlayerData } from '@app/store/tempStore.ts';
-import waitForGlobal from '@app/utils/dom/waitForGlobal.ts';
+import tempStore, { type PlayerData } from "@/store/tempStore.ts";
+import waitForGlobal from "@/utils/dom/waitForGlobal.ts";
 
 async function addPlayerData(playerData?: typeof Spicetify.Player.data) {
   const data = playerData ?? (await waitForGlobal(() => Spicetify?.Player?.data));
@@ -11,7 +11,7 @@ async function addPlayerData(playerData?: typeof Spicetify.Player.data) {
 
   const currentUrl = getImageUrl(data.item);
   if (!currentUrl) return;
-  document.body.style.setProperty('--np-img-url', `url("${currentUrl}")`);
+  document.body.style.setProperty("--np-img-url", `url("${currentUrl}")`);
   // const currentColors = await getExtractedColors([currentUrl]);
   tempStore.getState().setPlayer({
     current: {
@@ -32,7 +32,7 @@ async function addPlayerData(playerData?: typeof Spicetify.Player.data) {
             // colors: colors?.data?.extractedColors?.[0] ?? undefined,
             data: item,
           };
-        }) ?? []
+        }) ?? [],
       )
     ).filter(Boolean) as PlayerData[];
   };
@@ -47,11 +47,11 @@ async function addPlayerData(playerData?: typeof Spicetify.Player.data) {
 }
 
 waitForGlobal(() => Spicetify?.Player).then(() =>
-  Spicetify.Player.addEventListener('songchange', (e) => addPlayerData(e?.data))
+  Spicetify.Player.addEventListener("songchange", (e) => addPlayerData(e?.data)),
 );
 
 waitForGlobal(() => Spicetify?.Platform?.PlayerAPI?._queue?._events).then((events: any) =>
-  events?.addListener('queue_update', () => addPlayerData())
+  events?.addListener("queue_update", () => addPlayerData()),
 );
 
 export default addPlayerData;

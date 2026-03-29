@@ -1,5 +1,5 @@
-import UI from '@app/components/ui/index.ts';
-import React, { type FC, type ReactNode, useEffect, useRef, useState } from 'react';
+import UI from "@/components/ui/index.ts";
+import React, { type FC, type ReactNode, useEffect, useRef, useState } from "react";
 
 export type Notification = {
   id?: string;

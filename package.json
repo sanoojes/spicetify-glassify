@@ -1,0 +1,45 @@
+{
+  "name": "glassify",
+  "version": "0.0.1",
+  "private": true,
+  "description": "A sleek and glassy spicetify theme created with @spicetify/creator",
+  "type": "module",
+  "scripts": {
+    "sc": "spicetify-creator",
+    "dev": "spicetify-creator dev",
+    "build": "spicetify-creator build",
+    "update-types": "spicetify-creator update-types",
+    "clean-spice": "spicetify-creator clean-spicetify --all",
+    "fmt": "oxfmt",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix"
+  },
+  "dependencies": {
+    "@fluentui/react-icons": "^2.0.323",
+    "esbuild": "^0.25.12",
+    "esbuild-plugin-svgr": "^3.1.1",
+    "lodash": "^4.17.23",
+    "react-color-palette": "^7.3.1",
+    "socket.io-client": "^4.8.3",
+    "three": "^0.179.1",
+    "zod": "^4.3.6",
+    "zustand": "^5.0.12"
+  },
+  "devDependencies": {
+    "@spicemod/creator": "^0.0.35",
+    "@types/bun": "^1.3.10",
+    "@types/lodash": "^4.17.24",
+    "@types/node": "^22.19.15",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
+    "@types/three": "^0.179.0",
+    "oxfmt": "^0.42.0",
+    "oxlint": "^1.43.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

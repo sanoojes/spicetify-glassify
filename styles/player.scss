@@ -62,7 +62,7 @@
   height: var(--player-height, 80px);
   width: var(--player-width, 100%);
   max-width: var(--player-width, 100%);
-  padding: 0 var(--player-padding-x);
+  padding: 8px var(--player-padding-x);
 }
 
 .floating.Root__now-playing-bar {

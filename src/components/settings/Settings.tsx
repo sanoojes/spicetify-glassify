@@ -1,19 +1,19 @@
-import getSettingsSections from '@app/components/settings/helper/getSettingsSections.ts';
-import Section from '@app/components/settings/ui/Section.tsx';
-import UI from '@app/components/ui/index.ts';
-import appStore from '@app/store/appStore.ts';
-import type { Component, GroupProps, SectionProps } from '@app/types/settingSchema.ts';
-import React, { useEffect, useState } from 'react';
+import getSettingsSections from "@/components/settings/helper/getSettingsSections.ts";
+import Section from "@/components/settings/ui/Section.tsx";
+import UI from "@/components/ui/index.ts";
+import appStore from "@/store/appStore.ts";
+import type { Component, GroupProps, SectionProps } from "@/types/settingSchema.ts";
+import React, { useEffect, useState } from "react";
 
 const Settings = () => {
   const [sections, setSections] = useState<SectionProps[]>([]);
   const [loading, setLoading] = useState(true);
   const [filtering, setFiltering] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
   useEffect(() => {
-    document.body.classList.add('settings-open');
+    document.body.classList.add("settings-open");
 
     const initialSections = getSettingsSections();
     setSections(initialSections);
@@ -24,7 +24,7 @@ const Settings = () => {
       setSections(updatedSections);
     });
     return () => {
-      document.body.classList.remove('settings-open');
+      document.body.classList.remove("settings-open");
       unsubscribe();
     };
   }, []);
@@ -43,12 +43,12 @@ const Settings = () => {
   const lowerSearch = debouncedQuery.toLowerCase();
 
   const filteredSections = sections
-    .filter((section) => section.sectionName === selectedCategory || selectedCategory === 'All')
+    .filter((section) => section.sectionName === selectedCategory || selectedCategory === "All")
     .map((section) => {
       const filteredGroups = section.groups
         .map((group) => {
           const filteredComponents = group.components.filter((comp: Component) =>
-            comp.label.toLowerCase().includes(lowerSearch)
+            comp.label.toLowerCase().includes(lowerSearch),
           );
           if (filteredComponents.length === 0) return null;
           return { ...group, components: filteredComponents };
@@ -60,7 +60,7 @@ const Settings = () => {
     })
     .filter(Boolean) as SectionProps[];
 
-  const categories = ['All', ...sections.map((s) => s.sectionName)];
+  const categories = ["All", ...sections.map((s) => s.sectionName)];
 
   return (
     <div className="glassify-settings">

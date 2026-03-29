@@ -1,7 +1,7 @@
-import appStore from '@app/store/appStore.ts';
-import getOrCreateStyle from '@app/utils/dom/getOrCreateStyle.ts';
-import { isLinux, isVersionAtLeast, isWindows } from '@app/utils/platform.ts';
-import getOrCreateElement from '../utils/dom/getOrCreateElement.ts';
+import appStore from "@/store/appStore.ts";
+import getOrCreateStyle from "@/utils/dom/getOrCreateStyle.ts";
+import { isLinux, isVersionAtLeast, isWindows } from "@/utils/platform.ts";
+import getOrCreateElement from "../utils/dom/getOrCreateElement.ts";
 
 function getZoom() {
   const zoom = window.outerHeight / window.innerHeight;
@@ -11,12 +11,12 @@ function getZoom() {
 let controlElem: HTMLDivElement | null = null;
 function mountTransparentWindowControls(height: number) {
   const { zoom, inverseZoom } = getZoom();
-  const style = getOrCreateStyle('transparent-control-styles');
-  const isV46Above = isVersionAtLeast('1.2.46') && !isVersionAtLeast('1.2.70');
+  const style = getOrCreateStyle("transparent-control-styles");
+  const isV46Above = isVersionAtLeast("1.2.46") && !isVersionAtLeast("1.2.70");
 
   if (!controlElem) {
-    controlElem = getOrCreateElement('div', 'transparent-control');
-    controlElem.classList.add('transparent-controls');
+    controlElem = getOrCreateElement("div", "transparent-control");
+    controlElem.classList.add("transparent-controls");
   }
 
   const normalHeight = height || (isV46Above ? 32 : 64);
@@ -55,8 +55,8 @@ async function updateTitlebarHeight(height: number) {
   const msg = { height };
   await Spicetify?.Platform?.ControlMessageAPI?._updateUiClient?.updateTitlebarHeight(msg);
   await Spicetify?.Platform?.UpdateAPI?._updateUiClient?.updateTitlebarHeight(msg);
-  await Spicetify.CosmosAsync.post('sp://messages/v1/container/control', {
-    type: 'update_titlebar',
+  await Spicetify.CosmosAsync.post("sp://messages/v1/container/control", {
+    type: "update_titlebar",
     height: `${height}px`,
   });
 }
@@ -72,8 +72,8 @@ function intervalCall() {
   setTimeout(() => clearInterval(intervalId), 10000);
 }
 
-window.addEventListener('resize', intervalCall);
-document.addEventListener('fullscreenchange', () =>
-  controlElem?.classList.toggle('hide-transparent-controls', !!document.fullscreenElement)
+window.addEventListener("resize", intervalCall);
+document.addEventListener("fullscreenchange", () =>
+  controlElem?.classList.toggle("hide-transparent-controls", !!document.fullscreenElement),
 );
 appStore.subscribe((state) => state.windowControlHeight, setControls);

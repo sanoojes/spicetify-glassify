@@ -1,5 +1,5 @@
 /** biome-ignore-all lint/a11y: no a11y for now  */
-import { ChevronDown16Filled } from '@fluentui/react-icons';
+import { ChevronDown16Filled } from "@fluentui/react-icons";
 import React, {
   type ButtonHTMLAttributes,
   createContext,
@@ -12,8 +12,8 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { createPortal } from 'react-dom';
+} from "react";
+import { createPortal } from "react-dom";
 
 // Context
 type DropdownContextType = {
@@ -61,7 +61,7 @@ function DropdownButton({ children }: DropdownButtonProps) {
   return (
     <button ref={buttonRef} onClick={toggleOpen} className="dropdown-button" type="button">
       {children}
-      <ChevronDown16Filled className={`dropdown-icon ${open ? 'rotate' : ''}`} />
+      <ChevronDown16Filled className={`dropdown-icon ${open ? "rotate" : ""}`} />
     </button>
   );
 }
@@ -113,7 +113,7 @@ function DropdownContent({ children }: DropdownContentProps) {
   };
 
   useEffect(() => {
-    document.body.classList.toggle('dropdown-open', open);
+    document.body.classList.toggle("dropdown-open", open);
   }, [open]);
 
   useEffect(() => {
@@ -122,10 +122,10 @@ function DropdownContent({ children }: DropdownContentProps) {
       setShow(false);
       updatePosition();
 
-      window.addEventListener('resize', updatePosition);
+      window.addEventListener("resize", updatePosition);
 
       return () => {
-        window.removeEventListener('resize', updatePosition);
+        window.removeEventListener("resize", updatePosition);
       };
     }
   }, [open]);
@@ -136,7 +136,7 @@ function DropdownContent({ children }: DropdownContentProps) {
     <div className="GenericModal__overlay dropdown-overlay" onClick={() => setOpen(false)}>
       <div
         ref={contentRef}
-        className={`dropdown-content ${ready && show ? 'visible' : ''}`}
+        className={`dropdown-content ${ready && show ? "visible" : ""}`}
         style={{
           top: coords.top,
           left: coords.left,
@@ -146,7 +146,7 @@ function DropdownContent({ children }: DropdownContentProps) {
         {children}
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
 

@@ -1,9 +1,9 @@
-import UI from '@app/components/ui/index.ts';
-import type { ColorPickerProps } from '@app/types/uiSchema.ts';
-import { ArrowResetRegular, Dismiss16Filled } from '@fluentui/react-icons';
-import React, { type CSSProperties, type FC, useEffect, useRef, useState } from 'react';
-import { ColorPicker as CP, useColor } from 'react-color-palette';
-import ReactDOM from 'react-dom';
+import UI from "@/components/ui/index.ts";
+import type { ColorPickerProps } from "@/types/uiSchema.ts";
+import { ArrowResetRegular, Dismiss16Filled } from "@fluentui/react-icons";
+import React, { type CSSProperties, type FC, useEffect, useRef, useState } from "react";
+import { ColorPicker as CP, useColor } from "react-color-palette";
+import ReactDOM from "react-dom";
 
 const getContrastColor = (hex: string): string => {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -12,7 +12,7 @@ const getContrastColor = (hex: string): string => {
 
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
 
-  return luminance > 0.5 ? '#000' : '#fff';
+  return luminance > 0.5 ? "#000" : "#fff";
 };
 
 const resolveCssVariable = (cssVar: string): string | null => {
@@ -22,9 +22,9 @@ const resolveCssVariable = (cssVar: string): string | null => {
     : null;
 };
 
-const isCssVar = (val?: string) => val?.startsWith('var(');
+const isCssVar = (val?: string) => val?.startsWith("var(");
 const getResolvedColor = (val: string) =>
-  isCssVar(val) ? (resolveCssVariable(val) ?? '#000000') : (val ?? '#000000');
+  isCssVar(val) ? (resolveCssVariable(val) ?? "#000000") : (val ?? "#000000");
 
 const ColorPickerPortal: FC<ColorPickerProps> = ({
   color,
@@ -53,10 +53,10 @@ const ColorPickerPortal: FC<ColorPickerProps> = ({
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
@@ -99,7 +99,7 @@ const ColorPickerPortal: FC<ColorPickerProps> = ({
       />
       <div
         className="rcp-current-color"
-        style={{ '--current-color': currentColor.hex } as CSSProperties}
+        style={{ "--current-color": currentColor.hex } as CSSProperties}
       >
         <p
           className="encore-text encore-text-body-small-bold"

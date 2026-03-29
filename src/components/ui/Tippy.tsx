@@ -1,5 +1,5 @@
-import { QuestionCircle20Regular } from '@fluentui/react-icons';
-import React, { type FC, type ReactNode } from 'react';
+import { QuestionCircle20Regular } from "@fluentui/react-icons";
+import React, { type FC, type ReactNode } from "react";
 
 type TippyProps = {
   label: ReactNode;

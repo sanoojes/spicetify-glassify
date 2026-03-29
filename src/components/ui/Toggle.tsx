@@ -1,5 +1,5 @@
-import type { ToggleProps } from '@app/types/uiSchema.ts';
-import React, { type ChangeEventHandler, type FC } from 'react';
+import type { ToggleProps } from "@/types/uiSchema.ts";
+import React, { type ChangeEventHandler, type FC } from "react";
 
 const Toggle: FC<ToggleProps> = ({ isChecked, onChange }) => {
   const handleChange: ChangeEventHandler<HTMLInputElement> = (e) => {

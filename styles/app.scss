@@ -1,25 +1,21 @@
-/** biome-ignore-all lint/complexity/noImportantStyles: TODO: add to ignore */
-/** biome-ignore-all lint/style/noDescendingSpecificity: TODO: add to ignore */
-@import "colors.css";
-@import "icons.css";
-@import "extension.css";
-@import "player.css";
+@use "./colors.scss";
+@use "./icons.scss";
+@use "./extension.scss";
+@use "./player.scss";
 
 :root {
   --fluid-color: rgba(200, 200, 200, 0.3);
 
   --shadow-glass:
-    inset 1px 1px 4px hsla(0, 0%, 100%, 0.3),
-    inset -1px -1px 6px hsla(0, 0%, 0%, 0.1), 0 4px 12px hsla(0, 0%, 0%, 0.15),
-    0 0 20px hsla(0, 0%, 100%, 0.05);
+    inset 1px 1px 4px hsla(0, 0%, 100%, 0.3), inset -1px -1px 6px hsla(0, 0%, 0%, 0.1),
+    0 4px 12px hsla(0, 0%, 0%, 0.15), 0 0 20px hsla(0, 0%, 100%, 0.05);
   --shadow-glass-no-clr:
-    inset 1px 1px 4px transparent, inset -1px -1px 6px transparent, 0 4px 12px transparent, 0 0 20px
-    transparent;
+    inset 1px 1px 4px transparent, inset -1px -1px 6px transparent, 0 4px 12px transparent,
+    0 0 20px transparent;
 
   --shadow-glass-large:
-    inset 2px 2px 6px hsla(0, 0%, 100%, 0.25),
-    inset -2px -2px 8px hsla(0, 0%, 0%, 0.15), 0 8px 24px hsla(0, 0%, 0%, 0.2),
-    0 0 40px hsla(0, 0%, 100%, 0.08);
+    inset 2px 2px 6px hsla(0, 0%, 100%, 0.25), inset -2px -2px 8px hsla(0, 0%, 0%, 0.15),
+    0 8px 24px hsla(0, 0%, 0%, 0.2), 0 0 40px hsla(0, 0%, 100%, 0.08);
 
   --glass-bg: hsla(0, 0%, 20%, 0.1);
   --glass-muted-bg: hsla(0, 0%, 0%, 0.2);
@@ -1802,7 +1798,10 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   }
   &.desktop {
     --umv-height: calc(var(--main-view-height, 95vh) * 1.125);
-    mask-image: linear-gradient(rgb(0, 0, 0) calc(var(--umv-height) / 1.125), rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(
+      rgb(0, 0, 0) calc(var(--umv-height) / 1.125),
+      rgba(0, 0, 0, 0) 100%
+    );
   }
   &.fade-in {
     transition: opacity 0.5s ease-in;
