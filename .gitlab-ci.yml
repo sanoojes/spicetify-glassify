@@ -12,7 +12,7 @@ pages:
   script:
     - bun install --frozen-lockfile
     - bun run build
-    - mkdir -p -r public/spice
+    - mkdir -p public/spice
     - cp -a docs/.vitepress/dist/. public/
     - cp -a dist/. public/spice/
   artifacts:
