@@ -9,6 +9,7 @@ export default defineConfig({
   linter: "oxlint",
   template: "theme",
   packageManager: "bun",
+  outDir: "dist",
   esbuildOptions: {
     alias: {
       "@": resolve(__dirname, "src"),

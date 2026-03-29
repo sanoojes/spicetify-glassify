@@ -5,6 +5,6 @@ translucent interface, smooth animations, and customizable elements for an
 immersive music experience.
 
 🔗 Explore the full documentation:
-[Glassify Docs](https://projects.sanooj.uk/spicetify/glassify/)
+[Glassify Docs](https://spicetify-glassify.sanooj.uk/)
 
 📜 Licensed under the [MIT License](LICENSE).

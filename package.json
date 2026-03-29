@@ -7,12 +7,16 @@
   "scripts": {
     "sc": "spicetify-creator",
     "dev": "spicetify-creator dev",
-    "build": "spicetify-creator build",
+    "build:theme": "spicetify-creator build",
+    "build": "bun run docs:build && bun run build:theme",
     "update-types": "spicetify-creator update-types",
     "clean-spice": "spicetify-creator clean-spicetify --all",
     "fmt": "oxfmt",
     "lint": "oxlint",
-    "lint:fix": "oxlint --fix"
+    "lint:fix": "oxlint --fix",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "@fluentui/react-icons": "^2.0.323",
@@ -37,7 +41,9 @@
     "oxlint": "^1.43.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitepress": "^2.0.0-alpha.17",
+    "vue": "^3.5.31"
   },
   "peerDependencies": {
     "typescript": "^5"
