@@ -11,6 +11,7 @@ export default defineConfig({
   packageManager: "bun",
   outDir: "dist",
   esbuildOptions: {
+    tsconfig: "tsconfig.app.json",
     alias: {
       "@": resolve(__dirname, "src"),
       "@icons": resolve(__dirname, "assets/icons/"),

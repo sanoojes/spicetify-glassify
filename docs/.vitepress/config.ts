@@ -20,14 +20,14 @@ export default defineConfig({
   ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [{ text: "Guide", link: "/installation" }],
+    nav: [{ text: "Guide", link: "/getting-started" }],
 
     sidebar: [
       {
         text: "Glassify Theme",
         items: [
           { text: "Overview", link: "/" },
-          { text: "Installation", link: "/installation" },
+          { text: "Installation", link: "/getting-started" },
           { text: "Screenshots", link: "/screenshots" },
           { text: "Uninstallation", link: "/uninstallation" },
           { text: "Credits", link: "/credits" },
