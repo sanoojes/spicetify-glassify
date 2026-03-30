@@ -4,11 +4,9 @@
     "description": "A fluid glassmorphic Spicetify theme with transparency, blur, and a sleek modern design.",
     "preview": "assets/images/base.png",
     "readme": "README.md",
-    "usercss": "https://cdn.jsdelivr.net/gh/sanoojes/spicetify-glassify@releases/versions/latest/user.css",
-    "schemes": "https://cdn.jsdelivr.net/gh/sanoojes/spicetify-glassify@releases/versions/latest/colors.ini",
-    "include": [
-      "https://cdn.jsdelivr.net/gh/sanoojes/spicetify-glassify@releases/versions/latest/theme.js"
-    ],
+    "usercss": "https://spicetify-glassify.sanooj.uk/spice/user.css",
+    "schemes": "https://spicetify-glassify.sanooj.uk/spice/colors.ini",
+    "include": ["https://spicetify-glassify.sanooj.uk/spice/theme.js"],
     "authors": [
       {
         "name": "Sachu",

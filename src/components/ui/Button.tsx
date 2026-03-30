@@ -1,7 +1,7 @@
 import type { ButtonProps } from "@/types/uiSchema.ts";
-import React, { type FC } from "react";
+import React from "react";
 
-const Button: FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   buttonText,
   children,
   onClick,

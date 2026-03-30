@@ -1,10 +1,10 @@
 import UI from "@/components/ui/index.ts";
 import { Dismiss16Filled } from "@fluentui/react-icons";
 import DiscordIcon from "@icons/discord-16.svg";
-import GithubIcon from "@icons/github-16.svg";
-import React, { type FC } from "react";
+import GitlabIcon from "@icons/gitlab-16.svg";
+import React from "react";
 
-const HeaderButtons: FC<{ closeModal: () => void }> = ({ closeModal }) => {
+const HeaderButtons: React.FC<{ closeModal: () => void }> = ({ closeModal }) => {
   const openLink = (url: string) => open(url, "_blank", "noopener,noreferrer");
 
   return (
@@ -12,7 +12,7 @@ const HeaderButtons: FC<{ closeModal: () => void }> = ({ closeModal }) => {
       <UI.Button
         variant="icon"
         className="discord"
-        onClick={() => openLink("https://social.sanooj.uk/spicetify-discord")}
+        onClick={() => openLink("https://sanooj.uk/spicetify-discord")}
         aria-label="Join Discord"
       >
         <DiscordIcon />
@@ -20,10 +20,10 @@ const HeaderButtons: FC<{ closeModal: () => void }> = ({ closeModal }) => {
       <UI.Button
         variant="icon"
         className="github"
-        onClick={() => openLink("https://github.com/sanoojes/spicetify-glassify")}
-        aria-label="View on GitHub"
+        onClick={() => openLink("https://gitlab.com/sanoojes/spicetify-glassify")}
+        aria-label="View on Gitlab"
       >
-        <GithubIcon />
+        <GitlabIcon />
       </UI.Button>
       <UI.Button variant="icon" onClick={closeModal} aria-label="Close Modal">
         <Dismiss16Filled />
