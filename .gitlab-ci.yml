@@ -15,6 +15,7 @@ pages:
     - mkdir -p public/spice
     - cp -a docs/.vitepress/dist/. public/
     - cp -a dist/. public/spice/
+    - cp color.ini public/spice/color.ini
   artifacts:
     paths:
       - public
