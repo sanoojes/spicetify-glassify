@@ -7,4 +7,4 @@ immersive music experience.
 🔗 Explore the full documentation:
 [Glassify Docs](https://spicetify-glassify.sanooj.uk/)
 
-📜 Licensed under the [MIT License](LICENSE).
+📜 Licensed under the [AGPLv3 License](LICENSE).
