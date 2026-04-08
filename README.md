@@ -9,5 +9,5 @@ All source code, updates, and issue tracking can now be found here:
 
 *Glassify is a sleek, glass-like, and highly customizable Spicetify theme.*
 
-* **Docs:** [Glassify Documentation](https://projects.sanooj.uk/spicetify/glassify/)
+* **Docs:** [Glassify Documentation](https://spicetify-glassify.sanooj.uk/)
 * **License:** GNU AGPLv3
