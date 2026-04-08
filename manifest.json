@@ -2,19 +2,25 @@
   {
     "name": "Glassify",
     "description": "A fluid glassmorphic Spicetify theme with transparency, blur, and a sleek modern design.",
-    "preview": "assets/images/base.png",
-    "readme": "README.md",
-    "usercss": "https://cdn.jsdelivr.net/gh/sanoojes/spicetify-glassify@releases/versions/latest/user.css",
-    "schemes": "https://cdn.jsdelivr.net/gh/sanoojes/spicetify-glassify@releases/versions/latest/colors.ini",
+    "preview": "https://glcdn.githack.com/sanoojes/spicetify-glassify/raw/main/assets/images/base.png",
+    "readme": "https://glcdn.githack.com/sanoojes/spicetify-glassify/raw/main/README.md",
+    "usercss": "https://spicetify-glassify.sanooj.uk/spice/user.css",
+    "schemes": "https://spicetify-glassify.sanooj.uk/spice/color.ini",
     "include": [
-      "https://cdn.jsdelivr.net/gh/sanoojes/spicetify-glassify@releases/versions/latest/theme.js"
+      "https://spicetify-glassify.sanooj.uk/spice/theme.js"
     ],
     "authors": [
       {
         "name": "Sachu",
-        "url": "https://github.com/sanoojes"
+        "url": "https://sanooj.uk"
       }
     ],
-    "tags": ["glass", "modern", "fluid", "transparent", "blur"]
+    "tags": [
+      "glass",
+      "modern",
+      "fluid",
+      "transparent",
+      "blur"
+    ]
   }
 ]

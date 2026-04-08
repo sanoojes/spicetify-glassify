@@ -1,10 +1,13 @@
 # 🎨 Glassify Theme for Spicetify
 
-Glassify is a sleek, glass-like **Spicetify** theme for Spotify with a modern,
-translucent interface, smooth animations, and customizable elements for an
-immersive music experience.
+**⚠️ This project has moved to GitLab.**
 
-🔗 Explore the full documentation:
-[Glassify Docs](https://projects.sanooj.uk/spicetify/glassify/)
+All source code, updates, and issue tracking can now be found here:  
+👉 **[gitlab.com/sanoojes/spicetify-glassify](https://gitlab.com/sanoojes/spicetify-glassify)**
 
-📜 Licensed under the [MIT License](LICENSE).
+---
+
+*Glassify is a sleek, glass-like, and highly customizable Spicetify theme.*
+
+* **Docs:** [Glassify Documentation](https://projects.sanooj.uk/spicetify/glassify/)
+* **License:** GNU AGPLv3
