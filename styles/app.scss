@@ -315,6 +315,9 @@
   }
 }
 
+
+.EU1ylDKh7s2oMU0g,
+.VwcQJ4Zsf0JKD3Ls,
 .Psc33HXPyazZYAAr1tgz,
 .Button-buttonTertiary-textBase-small-iconOnly-useBrowserDefaultFocusStyle,
 .TXqa_5BNj1JeWzfCW8lP,
@@ -484,6 +487,7 @@ body[data-page-url*="/discography"] {
   }
 
   .ARSbx0SA65V5vol27FS4.main-trackList-trackListHeader,
+  .Ltz8hFoxXpck1XAk.main-trackList-trackListHeader,
   .main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
     padding-top: 0;
   }
@@ -533,6 +537,9 @@ body[data-page-url*="/discography"] {
     pointer-events: none;
     box-shadow: var(--shadow-glass-large) !important;
   }
+}
+.Root__right-sidebar-peek {
+  background-color: transparent !important;
 }
 
 .wJiY1vDfuci2a4db {
@@ -632,6 +639,17 @@ body[data-page-url*="/discography"] {
 
   .main-actionButtons {
     padding-right: 0;
+  }
+}
+#search-dropdown {
+  margin-top: var(--s-md);
+  border-radius: var(--s-2xl);
+  box-shadow: var(--shadow-glass);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(1.5);
+
+  &:hover {
+    background-color: var(--glass-muted-bg);
   }
 }
 
@@ -808,6 +826,7 @@ body[data-page-url*="/discography"] {
   }
 
   .ARSbx0SA65V5vol27FS4.main-trackList-trackListHeader,
+  .Ltz8hFoxXpck1XAk.main-trackList-trackListHeader,
   .main-trackList-trackListHeaderStuck.main-trackList-trackListHeader {
     padding: 0;
     padding-top: var(--s-lg);
@@ -829,6 +848,7 @@ body[data-page-url*="/discography"] {
   }
 
   .ARSbx0SA65V5vol27FS4 > div,
+  .Ltz8hFoxXpck1XAk > div,
   .main-trackList-trackListHeaderStuck > div,
   .BHHXR8xc6m009ohY6aKU {
     backdrop-filter: blur(24px) saturate(1.5) !important;
@@ -1637,6 +1657,7 @@ body[data-page-url*="/section/"] {
 /* ctrl + k search bar not having cards */
 ,
 .aOxbsZDBlepfQptv_EfI,
+.main-trackCreditsModalV2-container,
 .main-trackCreditsModal-container,
 .main-playlistEditDetailsModal-container,
 .t1hN4Ju87afc5N5fDTnm
@@ -1727,10 +1748,11 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
     opacity: 1;
   }
 }
-
+.main-trackCreditsModalV2-mainSection,
 .main-trackCreditsModal-mainSection {
   padding: 8px 12px 0 16px !important;
   scrollbar-width: thin !important;
+  overflow: auto;
   // will-change: box-shadow, backdrop-filter;
 }
 
@@ -1738,9 +1760,12 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   padding-bottom: 8px;
 }
 
+.main-trackCreditsModalV2-header,
 .main-trackCreditsModal-header {
   padding: 16px 24px !important;
   align-items: center !important;
+  display: flex;
+  justify-content: space-between;
 }
 
 .main-trackCreditsModal-creditsGroup,
@@ -1754,10 +1779,11 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   color: var(--clr-on-secondary-container) !important;
 }
 
+.main-trackCreditsModalV2-originalCredits > *,
 .main-trackCreditsModal-originalCredits > * {
   overflow-wrap: break-word;
 }
-
+.main-trackCreditsModalV2-container,
 .main-trackCreditsModal-container h1,
 .main-type-alto {
   font-family: var(--encore-title-font-stack);
@@ -1765,6 +1791,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
 }
 
 /* ==========  Artist Modal ========== */
+.LZ7_eetiwAZK5Hcg,
 .oM6GLho8ikch1LWxe7EE,
 .uJjmxe0T11dUVeW6Biz8
 
@@ -1802,6 +1829,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   padding-bottom: 75%;
 }
 
+.myA6DDohmTER_nnW,
 .T_AmQPlZ6wvE819I7A0D
 
 /* left cards */ {
@@ -1814,6 +1842,15 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   padding: 2rem 16px;
 }
 
+.mlE5IirNNcAXiI5l{
+  gap: var(--s-sm);
+  margin-top: var(--s-md);
+}
+
+.uu9s9Uba3tQf6ExH /* verified by spot */,
+.Q63Qxcm2ngQYyluw /* Registered artist */,
+.PGUmrb7yhs8G70hC,
+.fAKBSTbDh50wSEim,
 .zQy0G59IX5G4Cc9AtWRT,
 .M6L_mQ0TXJ80Q0lefpy7,
 .W3ASliuwp8wC481K8uYJ,
@@ -1843,6 +1880,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
 }
 
 /* Follower Count Card */
+.PGUmrb7yhs8G70hC,
 .zQy0G59IX5G4Cc9AtWRT,
 .M6L_mQ0TXJ80Q0lefpy7,
 .TkEnV1bItcSb11Yb8h7h {
@@ -1855,6 +1893,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
 }
 
 /* Main Details Card */
+.QP3hDCAq98IyHLXm,
 .sA8mvxry8rChZbfKletu,
 .TV2j1oIRIkKH_6D1xP82 {
   margin: 0px 8px;
@@ -1867,6 +1906,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
 }
 
 /* Top in the world card */
+.UaFGUZb384McvxOx,
 .tLjX9htIKD_OCmEX01UN,
 .wQMdk0Hte_kTJhptsBxw,
 ._AEg6buY7wdVgxhkmvCP .wQMdk0Hte_kTJhptsBxw,
@@ -1883,7 +1923,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
 
   div {
     line-height: 8px;
-    position: relative;
+    position: relative !important;
     color: var(--clr-on-primary-container);
   }
 
@@ -1896,6 +1936,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   }
 }
 
+.zkqVTHXAsccK4ycz,
 .zFIvkObk4tmCiDALafwe,
 .OyLgnahIHw63684ABRBF
 
@@ -1907,8 +1948,10 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   border-radius: var(--s-md);
   box-shadow: var(--shadow-glass);
   transition: all 0.3s ease-in-out;
+  margin-left: auto;
 }
 
+.main-image-image.c9cLlvzUo0sfMadE .main-avatar-image,
 .main-avatar-avatar.JzWxhtfFNxjdIxpiOign,
 .main-avatar-avatar.KguYS3oppxDrMNpTUJcB img,
 .main-avatar-placeholderWrapper {
@@ -1916,6 +1959,7 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
 }
 
 /* Links container */
+.V__1mnmCEARkpUit,
 .kMBriy5t0vu7iY2UCVNT,
 .DVWIV41y6daOMjQKR8Zj {
   margin-top: 0;
@@ -1929,6 +1973,18 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
     box-shadow: var(--shadow-glass);
     text-decoration: none !important;
   }
+}
+
+/* Artist report btn */
+.U5IuIwO191I26RoF{
+  width: 100%;
+   margin-top: 4px;
+    padding: 12px 8px;
+    background-color: rgba(var(--clr-error-container-rgb), var(--glass-alpha));
+    color: var(--clr-on-error-container);
+    border-radius: var(--s-lg);
+    box-shadow: var(--shadow-glass);
+    text-decoration: none !important;
 }
 
 .artist-artistAbout-container {
@@ -2073,52 +2129,54 @@ dialog[aria-describedby="clear-cache-dialog-heading"] {
   background-color: transparent;
 }
 
-.x-toggle-wrapper {
-  height: 32px;
-  width: 56px;
-  cursor: pointer;
-}
+:root:root {
+  .x-toggle-wrapper {
+    height: 32px;
+    width: 56px;
+    cursor: pointer;
+  }
 
-.x-toggle-indicatorWrapper {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: var(--shadow-glass);
-}
+  .x-toggle-indicatorWrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow-glass);
+  }
 
-.x-toggle-indicator {
-  display: block;
-  position: relative;
-  height: 26px;
-  width: 26px;
-  inset: 0 !important;
-  transform: scale(0.8);
-  transform-origin: center center;
-  margin-inline-end: 24px;
-  transition: margin 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  /* transform 100ms cubic-bezier(0.2, 0, 0, 1); */
-}
+  .x-toggle-indicator {
+    display: block;
+    position: relative;
+    height: 26px;
+    width: 26px;
+    inset: 0 !important;
+    transform: scale(0.8);
+    transform-origin: center center;
+    margin-inline-end: 24px;
+    transition: margin 300ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* transform 100ms cubic-bezier(0.2, 0, 0, 1); */
+  }
 
-input:active:not([disabled]) ~ .x-toggle-indicatorWrapper .x-toggle-indicator,
-input:active ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
-  width: 24px;
-  height: 24px;
-  transform: scale(1);
-}
+  input:active:not([disabled]) ~ .x-toggle-indicatorWrapper .x-toggle-indicator,
+  input:active ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
+    width: 24px;
+    height: 24px;
+    transform: scale(1);
+  }
 
-input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
-  transform: scale(1);
-  margin-inline-start: 24px;
-  margin-inline-end: 0;
-}
+  input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
+    transform: scale(1);
+    margin-inline-start: 24px;
+    margin-inline-end: 0;
+  }
 
-.x-toggle-input {
-  opacity: 0;
-  pointer-events: none;
-  position: absolute;
+  .x-toggle-input {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+  }
 }
 
 .x-settings-tooltip {

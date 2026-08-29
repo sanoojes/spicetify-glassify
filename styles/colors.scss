@@ -267,21 +267,21 @@ main.T0fKO6B7LQSCE_VaSM1P > section {
 
 /* ========== Toggle ========== */
 .x-toggle-indicatorWrapper {
-  background-color: rgba(var(--clr-on-primary-container-rgb), 0.1);
+  background-color: rgba(var(--clr-on-primary-container-rgb), 0.1) !important;
 }
 
 input:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper {
-  background-color: var(--clr-surface-4);
+  background-color: var(--clr-surface-4) !important;
 }
 
 input:checked:hover:not([disabled], :active) ~ .x-toggle-indicatorWrapper {
-  background-color: var(--clr-primary);
+  background-color: var(--clr-primary) !important;
 }
 
 input:checked ~ .x-toggle-indicatorWrapper {
-  background-color: var(--clr-on-primary-container);
+  background-color: var(--clr-on-primary-container) !important;
 }
 
 input:checked ~ .x-toggle-indicatorWrapper .x-toggle-indicator {
-  background-color: var(--clr-primary-container);
+  background-color: var(--clr-primary-container) !important;
 }
