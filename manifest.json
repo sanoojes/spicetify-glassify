@@ -5,7 +5,7 @@
     "preview": "assets/images/base.png",
     "readme": "README.md",
     "usercss": "https://spicetify-glassify.sanooj.uk/spice/user.css",
-    "schemes": "https://spicetify-glassify.sanooj.uk/spice/colors.ini",
+    "schemes": "https://spicetify-glassify.sanooj.uk/spice/color.ini",
     "include": ["https://spicetify-glassify.sanooj.uk/spice/theme.js"],
     "authors": [
       {
