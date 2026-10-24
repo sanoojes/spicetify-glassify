@@ -32,7 +32,7 @@ const Modal: FC<ModalProps> = ({ isOpen, title, children, onClose }) => {
         aria-modal="true"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="main-embedWidgetGenerator-container">
+        <div className="main-embedWidgetGenerator-container glassify-content-container">
           <div className="main-trackCreditsModal-header">
             <h1 className="main-type-alto">{title}</h1>
             <div className="btn-wrapper">

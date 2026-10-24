@@ -1,7 +1,13 @@
+.glassify-content-container {
+    width: 65vw !important;
+    max-width: 40rem !important;
+}
+
 .glassify-settings {
-  .hidden {
-    display: none;
-    visibility: hidden;
+  .x-settings-section:not(:has([data-settings-row])),
+  .c0YUA36jRFG0TIG7atDA,
+  .x-settings-section {
+    display: grid;
   }
 
   .encore-text {
@@ -48,6 +54,11 @@
     font-size: 0.875rem !important;
     padding-left: 8px;
     font-weight: 600;
+  }
+
+  .hidden {
+    display: none !important;
+    visibility: hidden !important;
   }
 }
 

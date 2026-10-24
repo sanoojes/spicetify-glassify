@@ -196,8 +196,7 @@
 .search-recentSearches-seeAll,
 .Root__globalNav input,
 .main-topBar-buddyFeed,
-.main-globalNav-navLink,
-.main-userWidget-box,
+  .main-globalNav-navLink:not(.main-actionButtons):not(.main-globalNav-historyButtons),.main-userWidget-box,
 .x-settings-button,
 .main-playlistEditDetailsModal-imageDropDownButton,
 .search-searchCategory-carouselButton,
@@ -1610,6 +1609,15 @@ body[data-page-url*="/section/"] {
 .GenericModal__overlay {
   backdrop-filter: none;
   background-color: rgba(var(--clr-shadow-rgb), 0.5);
+}
+
+.GenericModal__overlay{
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .GenericModal {
