@@ -34,7 +34,7 @@ const tempStore = createStore<TempState & TempSetter>()(
     player: {},
     pageImg: {},
     setPlayer: (player) => set({ player: { ...get().player, ...player } }),
-    setPageImg: (pageImg) => set({ pageImg: { ...get().pageImg, ...pageImg } }),
+    setPageImg: (pageImg) => set({ pageImg }),
   })),
 );
 

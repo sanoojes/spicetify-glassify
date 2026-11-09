@@ -26,8 +26,8 @@ const UnderMainView = () => {
 
   const currentImage = useMemo(() => {
     if (desktop) return desktop;
-    if (type === "custom-img" && cover) return customUrl ?? cover;
-    if (type === "playing" && imgUrl && cover) return imgUrl;
+    if (type === "custom-img") return customUrl ?? cover ?? "";
+    if (type === "playing" && imgUrl) return imgUrl;
     return cover ?? "";
   }, [type, customUrl, cover, imgUrl, desktop]);
 

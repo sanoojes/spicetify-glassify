@@ -1,0 +1,267 @@
+/*
+ * Compatibility fixes for current Spotify UI builds.
+ *
+ * Keep selectors in this file limited to regressions caused by Spotify markup
+ * changes. This makes them easy to review or retire when stable selectors are
+ * available again.
+ */
+
+/* ========== Global navigation ========== */
+
+/* Leave room for the native macOS traffic-light controls. */
+body.glassify-macos .main-globalNav-historyButtons {
+  margin-inline-start: 72px !important;
+}
+
+/* Current Spotify builds frame these groups with square containers. */
+.main-globalNav-historyButtons,
+.main-actionButtons {
+  background: transparent !important;
+  border: none !important;
+  border-radius: var(--s-rounded) !important;
+  box-shadow: none !important;
+
+  &::before,
+  &::after {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+
+/* ========== Home background ========== */
+
+/*
+ * Spotify now colors this overlay from the first Home shortcut and changes it
+ * again while shortcuts are hovered. Keep it transparent so Glassify's playing
+ * artwork remains visible and stable behind the Home content.
+ */
+body[data-page-url="/"] .dqwQhIudKoD98eWJzj5E {
+  background-color: transparent !important;
+}
+
+/* ========== Artist-page glass panels ========== */
+
+/*
+ * Match the action bar and Popular tracks surface to the artist header instead
+ * of leaving the artwork sharp behind otherwise translucent panels.
+ */
+body[data-page-url^="/artist/"] {
+  .main-actionBar-ActionBar,
+  .main-trackList-trackList {
+    background-color: var(--glass-bg) !important;
+    background-clip: padding-box !important;
+    border-radius: var(--s-2xl) !important;
+    box-shadow: var(--shadow-glass-large) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(90%) !important;
+    backdrop-filter: blur(12px) saturate(90%) !important;
+  }
+}
+
+/* ========== Add-to-playlist popover ========== */
+
+form:has(> #curation-sheet-list[aria-label="Add to playlist menu"]) {
+  overflow: hidden !important;
+  background: rgba(22, 24, 28, 0.46) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.4) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(150%) brightness(0.9) !important;
+  backdrop-filter: blur(28px) saturate(150%) brightness(0.9) !important;
+
+  > * {
+    background-color: transparent !important;
+  }
+
+  input[aria-label="Find a playlist"] {
+    background: rgba(255, 255, 255, 0.07) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .UmC7B1blaToOXizU {
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+}
+
+#curation-sheet-list[aria-label="Add to playlist menu"] {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+
+/* ========== Card hover clarity ========== */
+
+/*
+ * Current Encore cards use a full-card ::after overlay on hover. Its original
+ * 8px blur and 70% brightness obscure the artwork, album title, and artist.
+ * Retain only a restrained glass highlight while leaving card content legible.
+ */
+body .main-card-cardContainer.Card {
+  isolation: isolate !important;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease !important;
+
+  /*
+   * Keep Spotify's full-card click target functional while rendering every real
+   * card surface above the glass overlay.
+   */
+  > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.main-card-cardContainer::after {
+    z-index: 0 !important;
+  }
+
+  &:hover,
+  &:focus-within {
+    background-color: rgba(255, 255, 255, 0.045) !important;
+    border-color: rgba(255, 255, 255, 0.14) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+      0 8px 24px rgba(0, 0, 0, 0.16) !important;
+
+    &.main-card-cardContainer::after {
+      background-color: rgba(255, 255, 255, 0.035) !important;
+      -webkit-backdrop-filter: blur(8px) brightness(0.78) !important;
+      backdrop-filter: blur(8px) brightness(0.78) !important;
+    }
+  }
+}
+
+/* Home cards navigate to their destination; direct playback happens there. */
+body[data-page-url="/"] .main-card-cardContainer.Card .main-card-PlayButtonContainer {
+  display: none !important;
+}
+
+/*
+ * Spotify positions both controls on a 16px rail below the card row. Anchor
+ * them to opposite sides and lift them into the visual centre of the cards.
+ */
+body[data-page-url="/"] .search-searchCategory-carouselButton {
+  top: calc(50% - 104px) !important;
+  bottom: auto !important;
+  z-index: 10 !important;
+  transform: translateY(-50%) !important;
+
+  &:first-child {
+    right: auto !important;
+    left: 8px !important;
+  }
+
+  &:last-child {
+    right: 8px !important;
+    left: auto !important;
+  }
+}
+
+/* Keep Home carousel cards aligned when a release title is unusually long. */
+body[data-page-url="/"] .main-card-cardContainer [id^="card-title-"] {
+  display: block !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+/* ========== Card play-button hover overlay ========== */
+
+.main-card-imageContainer {
+  position: relative !important;
+
+  > .main-card-PlayButtonContainer {
+    position: absolute !important;
+    inset: 0 !important;
+    pointer-events: none !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+
+    > div.main-playButton-PlayButton {
+      position: absolute !important;
+      right: 10px !important;
+      bottom: 10px !important;
+      top: auto !important;
+      left: auto !important;
+      width: 48px !important;
+      height: 48px !important;
+      pointer-events: auto !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+      filter: none !important;
+    }
+  }
+}
+
+.main-card-PlayButtonContainer {
+  .main-playButton-PlayButton > button.e-10451-legacy-button-primary,
+  .e-10451-button-primary__inner {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+  }
+
+  .main-playButton-PlayButton > button.e-10451-legacy-button-primary {
+    padding: 0 !important;
+  }
+
+  &::before,
+  &::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+  }
+}
+
+.main-playButton-PlayButton {
+  &::before,
+  &::after {
+    background: transparent !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+  }
+}
+
+/* ========== Your Library sticky header ========== */
+
+.Root__nav-bar {
+  .main-yourLibraryX-header,
+  .main-yourLibraryX-filterArea {
+    z-index: 10 !important;
+    background: color-mix(in srgb, var(--spice-main) 48%, transparent) !important;
+    background-clip: padding-box !important;
+    -webkit-backdrop-filter: blur(24px) saturate(140%) !important;
+    backdrop-filter: blur(24px) saturate(140%) !important;
+  }
+}
+
+/* ========== Expanded-library player alignment ========== */
+
+:root {
+  --expanded-player-offset: 284px;
+}
+
+.Root:has(.Root__nav-bar:hover) .Root__now-playing-bar {
+  box-sizing: border-box !important;
+  width: calc(100% - var(--expanded-player-offset) - 4px) !important;
+  margin-inline-start: var(--expanded-player-offset) !important;
+}
+
+.Root__now-playing-bar {
+  transition:
+    margin-inline-start 220ms ease,
+    width 220ms ease !important;
+}
